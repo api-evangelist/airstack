@@ -1,0 +1,39 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "airstack": "https://airstack.xyz/vocab#",
+    "farcaster": "https://farcaster.xyz/vocab#",
+    "Cast": "farcaster:Cast",
+    "CastAdd": "farcaster:CastAdd",
+    "CastRemove": "farcaster:CastRemove",
+    "CastId": "farcaster:CastId",
+    "CastEmbed": "farcaster:CastEmbed",
+    "Reaction": "farcaster:Reaction",
+    "Link": "farcaster:Link",
+    "UserData": "farcaster:UserData",
+    "Verification": "farcaster:Verification",
+    "UsernameProof": "farcaster:UsernameProof",
+    "HubEvent": "farcaster:HubEvent",
+    "FarcasterNetwork": "farcaster:FarcasterNetwork",
+    "Webhook": "airstack:Webhook",
+    "WebhookFilter": "airstack:WebhookFilter",
+    "fid": {
+      "@id": "farcaster:fid",
+      "@type": "@id"
+    },
+    "hash": "farcaster:hash",
+    "timestamp": "schema:dateCreated",
+    "url": "schema:url",
+    "mentions": "farcaster:mentions",
+    "embeds": "farcaster:embeds",
+    "text": "schema:text",
+    "parentUrl": "farcaster:parentUrl",
+    "parentHash": "farcaster:parentHash",
+    "name": "schema:name",
+    "description": "schema:description",
+    "provider": {
+      "@id": "schema:provider",
+      "@type": "@id"
+    }
+  }
+}

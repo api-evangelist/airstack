@@ -1,0 +1,93 @@
+{
+  "vocabulary": {
+    "name": "Airstack API Vocabulary",
+    "description": "Vocabulary terms derived from the Airstack Farcaster Hub REST API and Webhooks API OpenAPI specifications.",
+    "version": "1.0",
+    "source": [
+      "https://raw.githubusercontent.com/Airstack-xyz/oas/main/public/swagger.json",
+      "https://raw.githubusercontent.com/Airstack-xyz/oas/main/app/swagger/webhooks.json"
+    ],
+    "terms": [
+      {
+        "term": "Cast",
+        "definition": "A Farcaster message post (similar to a tweet), identified by FID and hash.",
+        "schema": "CastAdd"
+      },
+      {
+        "term": "CastId",
+        "definition": "A unique identifier for a Farcaster cast, consisting of the author FID and message hash.",
+        "schema": "CastId"
+      },
+      {
+        "term": "CastEmbed",
+        "definition": "An embedded URL or cast reference within a Farcaster cast.",
+        "schema": "CastEmbed"
+      },
+      {
+        "term": "Reaction",
+        "definition": "A Farcaster reaction (like or recast) on a cast.",
+        "schema": "Reaction"
+      },
+      {
+        "term": "Link",
+        "definition": "A social link relationship between two Farcaster users (follow).",
+        "schema": "Link"
+      },
+      {
+        "term": "UserData",
+        "definition": "Profile metadata for a Farcaster user such as display name, bio, or profile image.",
+        "schema": "UserData"
+      },
+      {
+        "term": "Verification",
+        "definition": "A cryptographic proof linking a Farcaster FID to an Ethereum address.",
+        "schema": "Verification"
+      },
+      {
+        "term": "UsernameProof",
+        "definition": "Proof that a Farcaster username (ENS or fname) is controlled by the given FID.",
+        "schema": "UsernameProof"
+      },
+      {
+        "term": "FID",
+        "definition": "Farcaster ID — a unique integer identifier assigned to each Farcaster user.",
+        "schema": "integer"
+      },
+      {
+        "term": "HubEvent",
+        "definition": "An event emitted by a Farcaster Hub when a message is merged, pruned, or revoked.",
+        "schema": "HubEvent"
+      },
+      {
+        "term": "FarcasterNetwork",
+        "definition": "An enum indicating the Farcaster network (mainnet or testnet).",
+        "schema": "FarcasterNetwork"
+      },
+      {
+        "term": "DbStats",
+        "definition": "Statistics about the state of the Hub's data store.",
+        "schema": "DbStats"
+      },
+      {
+        "term": "OnChainEvent",
+        "definition": "An on-chain event recorded on the Farcaster contracts (id registry, key registry, storage registry).",
+        "schema": "OnChainEvent"
+      },
+      {
+        "term": "Webhook",
+        "definition": "A configured HTTP callback endpoint registered to receive Farcaster Hub events from Airstack.",
+        "schema": "Webhook"
+      },
+      {
+        "term": "WebhookFilter",
+        "definition": "A filter definition that restricts which Hub events trigger a webhook callback.",
+        "schema": "WebhookFilter"
+      },
+      {
+        "term": "PageToken",
+        "definition": "A cursor token used for paginating through large result sets from the Airstack Hub API.",
+        "schema": "string"
+      }
+    ]
+  }
+}

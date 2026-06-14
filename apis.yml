@@ -76,7 +76,7 @@ apis:
       at developer.moxie.xyz.
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://docs.airstack.xyz/
-    baseURL: https://api.airstack.xyz
+    baseURL: https://hubs.airstack.xyz
     tags:
       - Farcaster
       - Social Graph
@@ -88,11 +88,41 @@ apis:
         url: https://docs.airstack.xyz/
       - type: DeprecationNotice
         url: https://docs.airstack.xyz/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/openapi/farcaster-hub-rest-api.json
+    contact:
+      - FN: Airstack Support
+        url: https://t.me/+1k3c2FR7z51mNDRh
+        email: ''
+  - name: Airstack Farcaster Webhooks API
+    description: >-
+      Airstack Webhooks API allows developers to register HTTP callback endpoints
+      to receive real-time Farcaster Hub events. Supports creating, listing, and
+      deleting webhooks, as well as testing webhook filters against sample events.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.airstack.xyz/
+    baseURL: https://webhooks.airstack.xyz
+    tags:
+      - Farcaster
+      - Webhooks
+      - REST
+      - Events
+    properties:
+      - type: Documentation
+        url: https://docs.airstack.xyz/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/openapi/farcaster-webhooks-api.json
     contact:
       - FN: Airstack Support
         url: https://t.me/+1k3c2FR7z51mNDRh
         email: ''
 common:
+  - type: JSONLDContext
+    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/json-ld/airstack-context.json
+  - type: Vocabulary
+    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/vocabulary/airstack-vocabulary.json
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/json-schema/farcaster-hub-api-schemas.json
   - type: GitHub
     url: https://github.com/Airstack-xyz
   - type: WebSDK
