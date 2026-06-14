@@ -1,0 +1,1759 @@
+schema {
+  query: Query
+}
+
+"""Custom scalar: blockchain address"""
+scalar Address
+
+"""Custom scalar: any JSON value"""
+scalar Any
+
+"""Custom scalar: date range string"""
+scalar DateRange
+
+"""Custom scalar: blockchain identity (address, ENS, Farcaster id, Lens handle)"""
+scalar Identity
+
+"""Custom scalar: integer as string"""
+scalar IntString
+
+"""Custom scalar: generic map / JSON object"""
+scalar Map
+
+"""Custom scalar: date-time"""
+scalar Time
+
+"""Custom scalar: time range"""
+scalar TimeRange
+
+# ─── Enums ───────────────────────────────────────────────────────────────────
+
+enum AccountStandard {
+  ERC6551
+}
+
+enum Audience {
+  all
+  farcaster
+}
+
+enum Blockchain {
+  ethereum
+}
+
+enum DomainDappName {
+  ens
+}
+
+enum DomainDappSlug {
+  ens_v1
+}
+
+enum EveryBlockchain {
+  ALL
+}
+
+enum FarcasterChannelActionType {
+  cast
+  follow
+  reply
+}
+
+enum FarcasterReactionCriteria {
+  liked
+  recasted
+  replied
+}
+
+enum NativeBalanceBlockchain {
+  degen
+}
+
+enum OrderBy {
+  ASC
+  DESC
+}
+
+enum OrderByAsIntString {
+  ASC
+  DESC
+}
+
+enum PoapDappName {
+  poap
+}
+
+enum PoapDappSlug {
+  poap_gnosis
+  poap_mainnet
+}
+
+enum PopularDappsCriteria {
+  GAS_SPENT
+  TOTAL_TRANSACTIONS
+  UNIQUE_USERS
+}
+
+enum SnapshotBlockchain {
+  base
+  ethereum
+  gold
+  zora
+}
+
+enum SocialDappName {
+  farcaster
+  lens
+}
+
+enum SocialDappSlug {
+  farcaster_goerli
+  farcaster_optimism
+  farcaster_v2_optimism
+  farcaster_v3_optimism
+  lens_polygon
+  lens_v2_polygon
+}
+
+enum TimeFrame {
+  eight_hours
+  one_day
+  one_hour
+  seven_days
+  two_days
+  two_hours
+}
+
+enum TokenBlockchain {
+  base
+  degen
+  ethereum
+  gold
+  ham
+  stp
+  zora
+}
+
+enum TokenTransferType {
+  BURN
+  MINT
+  TRANSFER
+}
+
+enum TokenType {
+  ERC20
+  ERC721
+  ERC1155
+}
+
+enum TrendingBlockchain {
+  base
+  degen
+}
+
+enum TrendingCastTimeFrame {
+  eight_hours
+  four_hours
+  one_day
+  one_hour
+  seven_days
+  twelve_hours
+  two_days
+  two_hours
+}
+
+enum TrendingCastsCriteria {
+  likes
+  likes_recasts_replies
+  recasts
+  replies
+  social_capital_value
+}
+
+enum TrendingMintsCriteria {
+  total_mints
+  unique_wallets
+}
+
+enum TrendingSwapsBlockchain {
+  base
+  ethereum
+}
+
+enum TrendingSwapsCriteria {
+  buy_transaction_count
+  buy_volume
+  sell_transaction_count
+  sell_volume
+  total_transaction_count
+  total_unique_wallets
+  total_volume
+  unique_buy_wallets
+  unique_sell_wallets
+}
+
+enum TrendingTokensCriteria {
+  total_transfers
+  unique_holders
+  unique_wallets
+}
+
+enum TrendingTokensTransferType {
+  all
+  self_initiated
+}
+
+# ─── Query Root ──────────────────────────────────────────────────────────────
+
+type Query {
+  Accounts(input: AccountsInput!): AccountsOutput
+  Domains(input: DomainsInput!): DomainsOutput
+  FarcasterCasts(input: FarcasterCastInput!): FarcasterCastOutput
+  FarcasterChannelParticipants(input: FarcasterChannelParticipantsInput!): FarcasterChannelParticipantsOutput
+  FarcasterChannels(input: FarcasterChannelsInput!): FarcasterChannelsOutput
+  FarcasterQuotedRecasts(input: FarcasterQuotedRecastsInput!): FarcasterQuotedRecastsOutput
+  FarcasterReactions(input: FarcasterReactionsInput!): FarcasterReactionsOutput
+  FarcasterReplies(input: FarcasterRepliesInput!): FarcasterRepliesOutput
+  FarcasterValidateFrameMessage(input: FarcasterFrameMessageInput!): FarcasterFrameMessageOutput
+  PoapEvents(input: PoapEventsInput!): PoapEventsOutput
+  Poaps(input: PoapsInput!): PoapsOutput
+  Snapshots(input: SnapshotsInput!): SnapshotsOutput
+  SocialFollowers(input: SocialFollowerInput!): SocialFollowerOutput
+  SocialFollowings(input: SocialFollowingInput!): SocialFollowingOutput
+  Socials(input: SocialsInput!): SocialsOutput
+  TokenBalances(input: TokenBalancesInput!): TokenBalancesOutput
+  TokenNfts(input: TokenNftsInput!): TokenNftsOutput
+  TokenTransfers(input: TokenTransfersInput!): TokenTransfersOutput
+  Tokens(input: TokensInput!): TokensOutput
+  TrendingCasts(input: TrendingCastsInput!): TrendingCastsOutput
+  TrendingMints(input: TrendingMintsInput!): TrendingMintsOutput
+  TrendingSwaps(input: TrendingSwapsInput!): TrendingSwapsOutput
+  TrendingTokens(input: TrendingTokensInput!): TrendingTokensOutput
+  Wallet(input: WalletInput!): Wallet
+  XMTPs(input: XmtPsInput!): XmtPsOutput
+}
+
+# ─── Pagination ───────────────────────────────────────────────────────────────
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  nextCursor: String!
+  prevCursor: String!
+}
+
+# ─── Account (ERC-6551) ──────────────────────────────────────────────────────
+
+"""On-chain smart contract account (ERC-6551)"""
+type Account {
+  """Nested query - wallet information for this account address"""
+  address: Wallet!
+  blockchain: TokenBlockchain
+  createdAtBlockNumber: Int
+  createdAtBlockTimestamp: Time
+  creationTransactionHash: String
+  deployer: String
+  id: ID!
+  """ERC-6551 implementation address"""
+  implementation: Address
+  """Token NFT associated with erc-6551"""
+  nft: TokenNft
+  registry: Address
+  salt: String
+  standard: AccountStandard!
+  tokenAddress: Address
+  tokenId: String
+  updatedAtBlockNumber: Int
+  updatedAtBlockTimestamp: Time
+}
+
+input AccountFilter {
+  address: Identity_Comparator_Exp
+  createdAtBlockTimestamp: Time_Comparator_Exp
+  implementation: Address_Comparator_Exp
+  registry: Address_Comparator_Exp
+  salt: String_Eq_Comparator_Exp
+  standard: AccountStandard_Comparator_Exp
+  tokenAddress: Address_Comparator_Exp
+  tokenId: String_Comparator_Exp
+}
+
+input AccountOrderBy {
+  createdAtBlockTimestamp: OrderBy
+}
+
+input AccountsInput {
+  blockchain: TokenBlockchain!
+  cursor: String
+  filter: AccountFilter
+  limit: Int
+  order: [AccountOrderBy]
+}
+
+input AccountsNestedInput {
+  blockchain: TokenBlockchain
+  filter: AccountFilter
+  limit: Int
+  order: [AccountOrderBy]
+  showOptimisticAddress: Boolean
+}
+
+type AccountsOutput {
+  Account: [Account]
+  pageInfo: PageInfo
+}
+
+# ─── Domain (ENS) ────────────────────────────────────────────────────────────
+
+type Domain {
+  avatar: String
+  blockchain: Blockchain!
+  chainId: String
+  createdAtBlockNumber: Int
+  createdAtBlockTimestamp: Time
+  dappName: DomainDappName
+  dappSlug: DomainDappSlug
+  expiryTimestamp: Time
+  formattedRegistrationCost: Float
+  formattedRegistrationCostInNativeToken: Float
+  formattedRegistrationCostInUSDC: Float
+  id: ID
+  isNameWrapped: Boolean
+  isPrimary: Boolean
+  labelHash: String
+  labelName: String
+  lastUpdatedBlockNumber: Int
+  lastUpdatedBlockTimestamp: Time
+  manager: Address!
+  managerDetails: Wallet
+  multiChainAddresses: [DomainMultiChainAddress]
+  name: String
+  owner: Address!
+  ownerDetails: Wallet
+  parent: String
+  paymentToken: Token
+  paymentTokenCostInNativeToken: Float
+  paymentTokenCostInUSDC: Float
+  registrationCost: String
+  registrationCostInNativeToken: String
+  registrationCostInUSDC: String
+  resolvedAddress: Address
+  resolvedAddressDetails: Wallet
+  resolverAddress: Address
+  subDomainCount: Int
+  subDomains(input: DomainsNestedInput): [Domain]
+  texts: [DomainTexts]
+  tokenAddress: Address!
+  tokenId: String
+  tokenNft: TokenNft
+  ttl: String
+}
+
+type DomainMultiChainAddress {
+  address: String
+  symbol: String
+}
+
+type DomainTexts {
+  key: String
+  value: String
+}
+
+input DomainFilter {
+  isPrimary: Boolean_Comparator_Exp
+  lastUpdatedBlockTimestamp: Time_Comparator_Exp
+  name: String_Comparator_Exp
+  owner: Identity_Comparator_Exp
+  resolvedAddress: Address_Comparator_Exp
+}
+
+input DomainOrderBy {
+  createdAtBlockTimestamp: OrderBy
+  expiryTimestamp: OrderBy
+  lastUpdatedBlockTimestamp: OrderBy
+}
+
+input DomainsInput {
+  blockchain: Blockchain!
+  cursor: String
+  filter: DomainFilter!
+  limit: Int
+  order: [DomainOrderBy]
+}
+
+input DomainsNestedInput {
+  blockchain: Blockchain
+  filter: DomainFilter
+  limit: Int
+  order: [DomainOrderBy]
+}
+
+type DomainsOutput {
+  Domain: [Domain]
+  pageInfo: PageInfo
+}
+
+# ─── Wallet ───────────────────────────────────────────────────────────────────
+
+type Wallet {
+  accounts(input: AccountsNestedInput): [Account]
+  addresses: [Address]
+  blockchain: TokenBlockchain
+  domains(input: DomainsNestedInput): [Domain]
+  """Blockchain address, ENS, Farcaster (fc_fid: / fc_fname:), or Lens handle"""
+  identity: Identity!
+  poaps(input: PoapsNestedInput): [Poap]
+  primaryDomain: Domain
+  socialFollowers(input: SocialFollowerNestedInput): SocialFollowerOutput
+  socialFollowings(input: SocialFollowingNestedInput): SocialFollowingOutput
+  socials(input: SocialsNestedInput): [Social]
+  tokenBalances(input: TokenBalancesNestedInput): [TokenBalance]
+  tokenTransfers(input: TokenTransfersNestedInput): [TokenTransfer]
+  xmtp(input: XmtPsNestedInput): [Xmtp]
+}
+
+input WalletInput {
+  blockchain: TokenBlockchain!
+  identity: Identity!
+}
+
+# ─── Social (Farcaster / Lens) ───────────────────────────────────────────────
+
+type Social {
+  blockchain: Blockchain
+  chainId: String
+  connectedAddresses: [ConnectedAddress]
+  coverImageContentValue: Media
+  coverImageURI: String
+  dappName: SocialDappName
+  dappSlug: SocialDappSlug
+  dappVersion: String
+  fnames: [String]
+  followerCount: Int
+  followerTokenAddress: Address
+  followers(input: SocialFollowerNestedInput): SocialFollowerOutput
+  followingCount: Int
+  followings(input: SocialFollowingNestedInput): SocialFollowingOutput
+  handleTokenAddress: Address
+  handleTokenId: String
+  id: ID
+  identity: Identity
+  isDefault: Boolean
+  isFarcasterPowerUser: Boolean
+  location: String
+  metadataURI: String
+  profileBio: String
+  profileCreatedAtBlockNumber: Int
+  profileCreatedAtBlockTimestamp: Time
+  profileDisplayName: String
+  profileHandle: String
+  profileImage: String
+  profileImageContentValue: Media
+  profileLastUpdatedAtBlockNumber: Int
+  profileLastUpdatedAtBlockTimestamp: Time
+  profileMetadata: Map
+  profileName: String
+  profileTokenAddress: String
+  profileTokenId: String
+  profileTokenIdHex: String
+  profileTokenUri: String
+  profileUrl: String
+  socialCapital: SocialCapital
+  twitterUserName: String
+  updatedAt: Time
+  userAddress: Address
+  userAddressDetails: Wallet
+  userAssociatedAddressDetails: [Wallet]
+  userAssociatedAddresses: [Address]
+  userCreatedAtBlockNumber: Int
+  userCreatedAtBlockTimestamp: Time
+  userHomeURL: String
+  userId: String
+  userLastUpdatedAtBlockNumber: Int
+  userLastUpdatedAtBlockTimestamp: Time
+  userRecoveryAddress: Address
+  website: String
+}
+
+type SocialCapital {
+  socialCapitalRank: Int
+  socialCapitalScore: Float
+  socialCapitalScoreRaw: String
+}
+
+type SocialCapitalValue {
+  formattedValue: Float
+  hash: String
+  rawValue: String
+}
+
+input SocialFilter {
+  dappName: SocialDappName_Comparator_Exp
+  dappSlug: SocialDappSlug_Comparator_Exp
+  followerCount: Int_Comparator_Exp
+  followingCount: Int_Comparator_Exp
+  identity: Identity_Comparator_Exp
+  isDefault: Boolean_Comparator_Exp
+  profileCreatedAtBlockTimestamp: Time_Comparator_Exp
+  profileName: Regex_String_Comparator_Exp
+  socialCapitalRank: Int_Comparator_Exp
+  socialCapitalScore: Float_Comparator_Exp
+  updatedAt: Time_Comparator_Exp
+  userAssociatedAddresses: Address_Comparator_Exp
+  userId: String_Comparator_Exp
+}
+
+input SocialOrderBy {
+  followerCount: OrderBy
+  followingCount: OrderBy
+  profileCreatedAtBlockTimestamp: OrderBy
+  socialCapitalRank: OrderBy
+  socialCapitalScore: OrderBy
+  updatedAt: OrderBy
+}
+
+input SocialsInput {
+  blockchain: Blockchain!
+  cursor: String
+  filter: SocialFilter!
+  limit: Int
+  order: [SocialOrderBy]
+}
+
+input SocialsNestedInput {
+  blockchain: Blockchain
+  filter: SocialFilter
+  limit: Int
+}
+
+type SocialsOutput {
+  Social: [Social]
+  pageInfo: PageInfo
+}
+
+# ─── Social Followers / Followings ───────────────────────────────────────────
+
+type SocialFollower {
+  blockNumber: Int
+  blockchain: EveryBlockchain
+  dappName: String
+  dappSlug: String
+  followerAddress: Wallet
+  followerProfileId: String
+  followerSince: Time
+  followerTokenId: String
+  followingAddress: Wallet
+  followingProfileId: String
+  id: ID
+}
+
+type SocialFollowing {
+  blockNumber: Int
+  blockchain: EveryBlockchain
+  dappName: String
+  dappSlug: String
+  followerAddress: Wallet
+  followerProfileId: String
+  followerTokenId: String
+  followingAddress: Wallet
+  followingProfileId: String
+  followingSince: Time
+  id: ID
+}
+
+input SocialFollowerFilter {
+  blockNumber: Int_Comparator_Exp
+  dappName: SocialDappName_Comparator_Exp
+  dappSlug: SocialDappSlug_Comparator_Exp
+  followerProfileId: String_Comparator_Exp
+  followerSince: Time_Comparator_Exp
+  followingProfileId: String_Comparator_Exp
+  identity: Identity_Comparator_Exp
+}
+
+input SocialFollowerInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: SocialFollowerFilter!
+  limit: Int
+  order: [SocialFollowerOrderBy]
+}
+
+input SocialFollowerNestedInput {
+  blockchain: EveryBlockchain
+  filter: SocialFollowerFilter
+  limit: Int
+  order: [SocialFollowerOrderBy]
+}
+
+input SocialFollowerOrderBy {
+  blockNumber: OrderBy
+  followerSince: OrderBy
+}
+
+type SocialFollowerOutput {
+  Follower: [SocialFollower]
+  pageInfo: PageInfo
+}
+
+input SocialFollowingFilter {
+  blockNumber: Int_Comparator_Exp
+  dappName: SocialDappName_Comparator_Exp
+  dappSlug: SocialDappSlug_Comparator_Exp
+  followerProfileId: String_Comparator_Exp
+  followingProfileId: String_Comparator_Exp
+  followingSince: Time_Comparator_Exp
+  identity: Identity_Comparator_Exp
+}
+
+input SocialFollowingInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: SocialFollowingFilter!
+  limit: Int
+  order: [SocialFollowingOrderBy]
+}
+
+input SocialFollowingNestedInput {
+  blockchain: EveryBlockchain
+  filter: SocialFollowingFilter
+  limit: Int
+  order: [SocialFollowingOrderBy]
+}
+
+input SocialFollowingOrderBy {
+  blockNumber: OrderBy
+  followingSince: OrderBy
+}
+
+type SocialFollowingOutput {
+  Following: [SocialFollowing]
+  pageInfo: PageInfo
+}
+
+# ─── Token ────────────────────────────────────────────────────────────────────
+
+type Token {
+  """Smart contract address"""
+  address: Address!
+  baseURI: String
+  blockchain: TokenBlockchain
+  chainId: String
+  contractMetaData: ContractMetadata
+  contractMetaDataURI: String
+  decimals: Int
+  id: ID
+  isSpam: Boolean
+  lastTransferBlock: Int
+  lastTransferHash: String
+  lastTransferTimestamp: Time
+  logo: LogoSizes
+  name: String
+  owner: Wallet
+  projectDetails: ProjectDetails
+  rawContractMetaData: Map
+  symbol: String
+  tokenBalances(input: TokenBalancesNestedInput): [TokenBalance]
+  tokenNfts(input: TokenNftsNestedInput): [TokenNft]
+  tokenTraits: Map
+  totalSupply: String
+  type: TokenType
+}
+
+type ContractMetadata {
+  description: String
+  externalLink: String
+  feeRecipient: String
+  image: String
+  name: String
+  sellerFeeBasisPoints: Int
+}
+
+type LogoSizes {
+  external: String
+  large: String
+  medium: String
+  original: String
+  small: String
+}
+
+type ProjectDetails {
+  collectionName: String
+  description: String
+  discordUrl: String
+  externalUrl: String
+  imageUrl: String
+  twitterUrl: String
+}
+
+input TokenFilter {
+  address: Address_Comparator_Exp
+  isSpam: Boolean_Comparator_Exp
+  name: String_Comparator_Exp
+  owner: Identity_Comparator_Exp
+  symbol: String_Comparator_Exp
+  type: TokenType_Comparator_Exp
+}
+
+input TokensInput {
+  blockchain: TokenBlockchain!
+  cursor: String
+  filter: TokenFilter!
+  limit: Int
+}
+
+type TokensOutput {
+  Token: [Token]
+  pageInfo: PageInfo
+}
+
+# ─── TokenBalance ─────────────────────────────────────────────────────────────
+
+type TokenBalance {
+  amount: String!
+  blockchain: TokenBlockchain
+  chainId: String!
+  formattedAmount: Float
+  id: ID!
+  lastUpdatedBlock: Int!
+  lastUpdatedTimestamp: Time
+  owner: Wallet!
+  token: Token
+  tokenAddress: Address!
+  tokenId: String
+  tokenNfts: TokenNft
+  tokenTransfers(input: TokenTransfersNestedInput): [TokenTransfer]
+  tokenType: TokenType
+}
+
+input TokenBalanceFilter {
+  formattedAmount: Float_Comparator_Exp
+  lastUpdatedTimestamp: Time_Comparator_Exp
+  owner: Identity_Comparator_Exp
+  tokenAddress: Address_Comparator_Exp
+  tokenId: String_Comparator_Exp
+  tokenType: TokenType_Comparator_Exp
+}
+
+input TokenBalanceOrderBy {
+  lastUpdatedTimestamp: OrderBy
+}
+
+input TokenBalancesInput {
+  blockchain: TokenBlockchain!
+  cursor: String
+  filter: TokenBalanceFilter!
+  limit: Int
+  order: [TokenBalanceOrderBy]
+}
+
+input TokenBalancesNestedInput {
+  blockchain: TokenBlockchain
+  filter: TokenBalanceFilter
+  limit: Int
+  order: [TokenBalanceOrderBy]
+}
+
+type TokenBalancesOutput {
+  TokenBalance: [TokenBalance]
+  pageInfo: PageInfo
+}
+
+# ─── TokenNft ─────────────────────────────────────────────────────────────────
+
+type TokenNft {
+  address: Address!
+  blockchain: TokenBlockchain
+  chainId: String!
+  contentType: String
+  contentValue: Media
+  erc6551Accounts(input: AccountsNestedInput): [Account]
+  id: ID!
+  lastTransferBlock: Int
+  lastTransferHash: String
+  lastTransferTimestamp: Time
+  metaData: NftMetadata
+  rawMetaData: Map
+  token: Token
+  tokenBalances(input: TokenBalancesNestedInput): [TokenBalance]
+  tokenId: String!
+  tokenTransfers(input: TokenTransfersNestedInput): [TokenTransfer]
+  tokenURI: String
+  totalSupply: String
+  type: TokenType
+}
+
+type NftMetadata {
+  animationUrl: String
+  attributes: [NftAttribute]
+  backgroundColor: String
+  description: String
+  externalUrl: String
+  image: String
+  imageData: String
+  name: String
+  youtubeUrl: String
+}
+
+type NftAttribute {
+  displayType: String
+  maxValue: String
+  trait_type: String
+  value: String
+}
+
+input TokenNftFilter {
+  address: Address_Comparator_Exp
+  metaData: NftMetadataFilter
+  tokenId: String_Comparator_Exp
+}
+
+input NftMetadataFilter {
+  attributes: NftAttributeFilter
+  name: String_Comparator_Exp
+}
+
+input NftAttributeFilter {
+  trait_type: String_Comparator_Exp
+  value: String_Comparator_Exp
+}
+
+input TokenNftOrderBy {
+  tokenId: OrderBy
+}
+
+input TokenNftsInput {
+  blockchain: TokenBlockchain!
+  cursor: String
+  filter: TokenNftFilter!
+  limit: Int
+  order: [TokenNftOrderBy]
+}
+
+input TokenNftsNestedInput {
+  blockchain: TokenBlockchain
+  filter: TokenNftFilter
+  limit: Int
+  order: [TokenNftOrderBy]
+}
+
+type TokenNftsOutput {
+  TokenNft: [TokenNft]
+  pageInfo: PageInfo
+}
+
+# ─── TokenTransfer ────────────────────────────────────────────────────────────
+
+type TokenTransfer {
+  amount: String
+  amounts: [String]
+  blockNumber: Int
+  blockTimestamp: Time
+  blockchain: TokenBlockchain
+  chainId: String
+  formattedAmount: Float
+  from: Wallet
+  id: ID
+  operator: Wallet
+  to: Wallet
+  token: Token
+  tokenAddress: Address
+  tokenId: String
+  tokenIds: [String]
+  tokenNft: TokenNft
+  tokenType: TokenType
+  transactionHash: String!
+  type: TokenTransferType
+}
+
+input TokenTransferFilter {
+  blockTimestamp: Time_Comparator_Exp
+  formattedAmount: Float_Comparator_Exp
+  from: Identity_Comparator_Exp
+  operator: Identity_Comparator_Exp
+  to: Identity_Comparator_Exp
+  tokenAddress: Address_Comparator_Exp
+  tokenId: String_Comparator_Exp
+  tokenType: TokenType_Comparator_Exp
+  transactionHash: String_Comparator_Exp
+  type: TokenTransferType_Comparator_Exp
+}
+
+input TokenTransferOrderBy {
+  blockTimestamp: OrderBy
+}
+
+input TokenTransfersInput {
+  blockchain: TokenBlockchain!
+  cursor: String
+  filter: TokenTransferFilter!
+  limit: Int
+  order: [TokenTransferOrderBy]
+}
+
+input TokenTransfersNestedInput {
+  blockchain: TokenBlockchain
+  filter: TokenTransferFilter
+  limit: Int
+  order: [TokenTransferOrderBy]
+}
+
+type TokenTransfersOutput {
+  TokenTransfer: [TokenTransfer]
+  pageInfo: PageInfo
+}
+
+# ─── Snapshot (historical token ownership) ───────────────────────────────────
+
+type Snapshot {
+  amount: String
+  blockchain: TokenBlockchain
+  chainId: String
+  endBlockNumber: Int
+  endBlockTimestamp: Time
+  formattedAmount: Float
+  id: ID!
+  owner: Wallet!
+  startBlockNumber: Int
+  startBlockTimestamp: Time
+  token: Token
+  tokenAddress: Address!
+  tokenId: String
+  tokenNft: TokenNft
+  tokenType: TokenType
+}
+
+input SnapshotFilter {
+  blockNumber: Range_Comparator_Exp
+  date: Date_Range_Comparator_Exp
+  owner: Identity_Comparator_Exp
+  timestamp: Time_Range_Comparator_Exp
+  tokenAddress: Address_Comparator_Exp
+  tokenId: String_Comparator_Exp
+  tokenType: TokenType_Comparator_Exp
+}
+
+input SnapshotsInput {
+  blockchain: SnapshotBlockchain!
+  cursor: String
+  filter: SnapshotFilter!
+  limit: Int
+}
+
+type SnapshotsOutput {
+  Snapshot: [Snapshot]
+  pageInfo: PageInfo
+}
+
+# ─── POAP ─────────────────────────────────────────────────────────────────────
+
+type Poap {
+  attendee: PoapAttendee
+  blockchain: EveryBlockchain
+  chainId: String
+  createdAtBlockNumber: Int
+  createdAtBlockTimestamp: Time
+  dappName: PoapDappName
+  dappSlug: PoapDappSlug
+  dappVersion: String
+  eventId: String
+  id: ID
+  mintHash: String
+  mintOrder: Int
+  owner: Wallet!
+  poapEvent: PoapEvent
+  tokenAddress: String
+  tokenId: String
+  tokenUri: String
+  transferCount: Int
+}
+
+type PoapAttendee {
+  owner: Wallet!
+  totalPoapOwned: Int
+}
+
+type PoapAttendeesOutput {
+  PoapAttendee: [PoapAttendee]
+  pageInfo: PageInfo
+}
+
+type PoapEvent {
+  blockchain: EveryBlockchain
+  chainId: String
+  city: String
+  contentType: String
+  contentValue: Media
+  country: String
+  dappName: PoapDappName
+  dappSlug: PoapDappSlug!
+  dappVersion: String
+  description: String
+  endDate: Time
+  eventId: String
+  eventName: String
+  eventURL: String
+  id: ID!
+  isVirtualEvent: Boolean
+  metadata: Map
+  poaps(input: PoapsNestedInput): [Poap]
+  startDate: Time
+  tokenMints: Int
+}
+
+input PoapEventFilter {
+  city: String_Comparator_Exp
+  country: String_Comparator_Exp
+  dappName: PoapDappName_Comparator_Exp
+  dappSlug: PoapDappSlug_Comparator_Exp
+  endDate: String_Comparator_Exp
+  eventId: String_Comparator_Exp
+  eventName: Regex_String_Comparator_Exp
+  isVirtualEvent: Boolean_Comparator_Exp
+  startDate: String_Comparator_Exp
+  tokenMints: Int_Comparator_Exp
+}
+
+input PoapEventOrderBy {
+  endDate: OrderBy
+  startDate: OrderBy
+  tokenMints: OrderBy
+}
+
+input PoapEventsInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: PoapEventFilter!
+  limit: Int
+  order: [PoapEventOrderBy]
+}
+
+type PoapEventsOutput {
+  PoapEvent: [PoapEvent]
+  pageInfo: PageInfo
+}
+
+input PoapFilter {
+  createdAtBlockNumber: Int_Comparator_Exp
+  dappName: PoapDappName_Comparator_Exp
+  dappSlug: PoapDappSlug_Comparator_Exp
+  eventId: String_Comparator_Exp
+  owner: Identity_Comparator_Exp
+  tokenId: String_Comparator_Exp
+}
+
+input PoapOrderBy {
+  createdAtBlockNumber: OrderBy
+}
+
+input PoapsInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: PoapFilter!
+  limit: Int
+  order: [PoapOrderBy]
+}
+
+input PoapsNestedInput {
+  blockchain: EveryBlockchain
+  filter: PoapFilter
+  limit: Int
+  order: [PoapOrderBy]
+}
+
+type PoapsOutput {
+  Poap: [Poap]
+  pageInfo: PageInfo
+}
+
+# ─── Farcaster Cast ───────────────────────────────────────────────────────────
+
+type FarcasterCast {
+  castedAtTimestamp: Time
+  castedBy: Social
+  channel: FarcasterChannel
+  embeds: [Map]
+  fid: String
+  frame: FarcasterFrame
+  hash: String
+  id: String
+  mentions: [Mentions]
+  numberOfLikes: Int
+  numberOfRecasts: Int
+  numberOfReplies: Int
+  parentCast: FarcasterCast
+  parentFid: String
+  parentHash: String
+  quotedCast: [FarcasterCast]
+  rawText: String
+  rootParentUrl: String
+  socialCapitalValue: SocialCapitalValue
+  text: String
+  url: String
+}
+
+type Mentions {
+  fid: String
+  position: Int
+  profile: Social
+}
+
+input FarcasterCastFilter {
+  castedAtTimestamp: Time_Comparator_Exp
+  castedBy: Identity_Comparator_Exp
+  frameUrl: String_Eq_In_Comparator_Exp
+  hasEmbeds: Boolean_Comparator_Exp
+  hasFrames: Boolean_Comparator_Exp
+  hasMentions: Boolean_Comparator_Exp
+  hash: String_Eq_In_Comparator_Exp
+  rootParentUrl: String_Eq_In_Comparator_Exp
+  url: String_Eq_In_Comparator_Exp
+}
+
+input FarcasterCastInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: FarcasterCastFilter!
+  limit: Int
+}
+
+type FarcasterCastOutput {
+  Cast: [FarcasterCast]
+  pageInfo: PageInfo
+}
+
+# ─── Farcaster Channel ────────────────────────────────────────────────────────
+
+type FarcasterChannel {
+  channelId: String!
+  createdAtTimestamp: Time!
+  dappName: String!
+  dappSlug: String!
+  description: String!
+  followerCount: Int
+  id: ID!
+  imageUrl: String!
+  isModerationEnabled: Boolean
+  leadIds: [String]
+  leadProfiles(input: SocialsNestedInput): [Social]
+  moderatorIds: [String]
+  moderatorProfiles(input: SocialsNestedInput): [Social]
+  name: String!
+  participants(input: FarcasterChannelParticipantNestedInput): [FarcasterChannelParticipant]
+  url: String!
+}
+
+type FarcasterChannelParticipant {
+  channel(input: FarcasterChannelNestedInput): FarcasterChannel
+  channelActions: [FarcasterChannelActionType]
+  channelId: String!
+  channelName: String!
+  dappName: String!
+  dappSlug: String!
+  id: ID
+  lastActionTimestamp: Time!
+  lastCastedTimestamp: Time
+  lastFollowedTimestamp: Time
+  lastRepliedTimestamp: Time
+  participant(input: SocialsNestedInput): Social
+  participantId: String!
+}
+
+input FarcasterChannelFilter {
+  channelId: String_Comparator_Exp
+  createdAtTimestamp: Time_Comparator_Exp
+  leadId: String_Comparator_Exp
+  leadIdentity: Identity_Comparator_Exp
+  moderatorId: String_Comparator_Exp
+  moderatorIdentity: Identity_Comparator_Exp
+  name: Regex_String_Comparator_Exp
+  url: String_Comparator_Exp
+}
+
+input FarcasterChannelNestedInput {
+  blockchain: EveryBlockchain
+  filter: FarcasterChannelFilter
+  limit: Int
+  order: [FarcasterChannelOrderBy]
+}
+
+input FarcasterChannelOrderBy {
+  createdAtTimestamp: OrderBy
+  followerCount: OrderBy
+}
+
+input FarcasterChannelParticipantFilter {
+  channelActions: FarcasterChannelActionType_Comparator_Exp
+  channelId: String_Comparator_Exp
+  channelName: Regex_String_Comparator_Exp
+  lastActionTimestamp: Time_Comparator_Exp
+  participant: Identity_Comparator_Exp
+}
+
+input FarcasterChannelParticipantNestedInput {
+  blockchain: EveryBlockchain
+  filter: FarcasterChannelParticipantFilter
+  limit: Int
+  order: [FarcasterChannelParticipantOrderBy]
+}
+
+input FarcasterChannelParticipantOrderBy {
+  lastActionTimestamp: OrderBy
+}
+
+input FarcasterChannelParticipantsInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: FarcasterChannelParticipantFilter!
+  limit: Int
+  order: [FarcasterChannelParticipantOrderBy]
+}
+
+type FarcasterChannelParticipantsOutput {
+  FarcasterChannelParticipant: [FarcasterChannelParticipant]
+  pageInfo: PageInfo
+}
+
+input FarcasterChannelsInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: FarcasterChannelFilter
+  limit: Int
+  order: [FarcasterChannelOrderBy]
+}
+
+type FarcasterChannelsOutput {
+  FarcasterChannel: [FarcasterChannel]
+  pageInfo: PageInfo
+}
+
+# ─── Farcaster Reactions / Replies / Recasts ─────────────────────────────────
+
+type FarcasterReaction {
+  cast: FarcasterCast
+  castHash: String
+  reactedBy: Social
+}
+
+input FarcasterReactionsFilter {
+  castHash: String_Eq_In_Comparator_Exp
+  castUrl: String_Eq_In_Comparator_Exp
+  channelId: String_Comparator_Exp
+  criteria: FarcasterReactionCriteria!
+  frameUrl: String_Eq_In_Comparator_Exp
+  reactedBy: Identity_Comparator_Exp
+}
+
+input FarcasterReactionsInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: FarcasterReactionsFilter!
+  limit: Int
+}
+
+type FarcasterReactionsOutput {
+  Criteria: FarcasterReactionCriteria
+  Reaction: [FarcasterReaction]
+  pageInfo: PageInfo
+}
+
+input FarcasterRepliesFilter {
+  hash: String_Eq_In_Comparator_Exp
+  parentCastedBy: Identity_Comparator_Exp
+  parentHash: String_Eq_In_Comparator_Exp
+  parentUrl: String_Eq_In_Comparator_Exp
+  repliedBy: Identity_Comparator_Exp
+}
+
+input FarcasterRepliesInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: FarcasterRepliesFilter!
+  limit: Int
+}
+
+type FarcasterRepliesOutput {
+  Reply: [FarcasterCast]
+  pageInfo: PageInfo
+}
+
+input FarcasterQuotedRecastsFilter {
+  parentCastedBy: Identity_Comparator_Exp
+  parentHash: String_Eq_In_Comparator_Exp
+  parentUrl: String_Eq_In_Comparator_Exp
+  recastedBy: Identity_Comparator_Exp
+}
+
+input FarcasterQuotedRecastsInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: FarcasterQuotedRecastsFilter!
+  limit: Int
+}
+
+type FarcasterQuotedRecastsOutput {
+  QuotedRecast: [FarcasterCast]
+  pageInfo: PageInfo
+}
+
+# ─── Farcaster Frame ──────────────────────────────────────────────────────────
+
+type FarcasterFrame {
+  buttons: [FrameButton]
+  castedAtTimestamp: Time
+  frameHash: String
+  frameUrl: String
+  imageAspectRatio: String
+  imageUrl: String
+  inputText: String
+  postUrl: String
+  state: String
+}
+
+type FrameButton {
+  action: String
+  id: String
+  index: Int
+  label: String
+  target: String
+}
+
+type FarcasterFrameMessageOutput {
+  castedBy: Social
+  castedByFid: Int
+  interactedBy: Social
+  interactedByFid: Int
+  isValid: Boolean
+  message: FrameMessage
+  messageByte: String
+  messageRaw: Map
+}
+
+input FarcasterFrameMessageInput {
+  filter: FarcasterFrameMessageInputFilter!
+}
+
+input FarcasterFrameMessageInputFilter {
+  messageBytes: String
+}
+
+type FrameMessage {
+  data: FrameMessageData
+  hash: String
+  hashScheme: String
+  signature: String
+  signatureScheme: String
+  signer: String
+}
+
+type FrameMessageData {
+  fid: Int
+  frameActionBody: FrameMessageActionBody
+  network: String
+  time: Time
+  type: String
+}
+
+type FrameMessageActionBody {
+  address: String
+  buttonIndex: Int
+  castId: FrameMessageCastId
+  inputText: String
+  inputTextDecoded: String
+  state: String
+  stateDecoded: Any
+  transactionHash: String
+  transactionId: String
+  url: String
+  urlDecoded: String
+}
+
+type FrameMessageCastId {
+  fid: Int
+  hash: String
+}
+
+# ─── Trending ─────────────────────────────────────────────────────────────────
+
+type TrendingMint {
+  address: String
+  audience: String
+  blockchain: String
+  chainId: String
+  criteria: String
+  criteriaCount: Int
+  erc1155TokenID: String
+  id: String
+  timeFrom: Time
+  timeTo: Time
+  token: Token
+}
+
+input TrendingMintsInput {
+  audience: Audience!
+  blockchain: TrendingBlockchain!
+  criteria: TrendingMintsCriteria!
+  cursor: String
+  filter: TrendingFilter
+  limit: Int
+  timeFrame: TimeFrame!
+}
+
+type TrendingMintsOutput {
+  TrendingMint: [TrendingMint]
+  pageInfo: PageInfo
+}
+
+type TrendingToken {
+  address: String
+  audience: String
+  blockchain: String
+  chainId: String
+  criteria: String
+  criteriaCount: Int
+  id: String
+  timeFrom: Time
+  timeTo: Time
+  token: Token
+  uniqueHolders: Int
+}
+
+input TrendingTokensInput {
+  audience: Audience!
+  blockchain: TrendingBlockchain!
+  criteria: TrendingTokensCriteria!
+  cursor: String
+  filter: TrendingTokensFilter
+  limit: Int
+  swappable: Boolean_Comparator_Exp
+  timeFrame: TimeFrame!
+  transferType: TrendingTokensTransferType!
+}
+
+type TrendingTokensOutput {
+  TrendingToken: [TrendingToken]
+  pageInfo: PageInfo
+}
+
+type TrendingSwap {
+  address: String
+  blockchain: String
+  buyTransactionCount: Int
+  buyVolume: Float
+  chainId: String
+  criteria: String
+  id: String
+  sellTransactionCount: Int
+  sellVolume: Float
+  timeFrom: Time
+  timeTo: Time
+  token: Token
+  totalTransactionCount: Int
+  totalUniqueWallets: Int
+  totalVolume: Float
+  uniqueBuyWallets: Int
+  uniqueSellWallets: Int
+}
+
+input TrendingSwapsInput {
+  blockchain: TrendingSwapsBlockchain!
+  criteria: TrendingSwapsCriteria!
+  cursor: String
+  filter: TrendingSwapsFilter
+  limit: Int
+  timeFrame: TimeFrame!
+}
+
+type TrendingSwapsOutput {
+  TrendingSwap: [TrendingSwap]
+  pageInfo: PageInfo
+}
+
+type TrendingCast {
+  cast: FarcasterCast
+  channel: FarcasterChannel
+  criteria: String
+  criteriaCount: Float
+  fid: Int
+  hash: String
+  id: String
+  rootParentUrl: String
+  socialCapitalValueFormatted: Float
+  socialCapitalValueRaw: String
+  timeFrom: Time
+  timeTo: Time
+}
+
+input TrendingCastFilter {
+  fid: TrendingCast_Int_Comparator_Exp
+  rootParentUrl: String_Eq_Comparator_Exp
+}
+
+input TrendingCastsInput {
+  blockchain: EveryBlockchain!
+  criteria: TrendingCastsCriteria!
+  cursor: String
+  filter: TrendingCastFilter
+  limit: Int
+  timeFrame: TrendingCastTimeFrame!
+}
+
+type TrendingCastsOutput {
+  TrendingCast: [TrendingCast]
+  pageInfo: PageInfo
+}
+
+input TrendingFilter {
+  address: Trending_Comparator_Exp
+}
+
+input TrendingTokensFilter {
+  address: Trending_Comparator_Exp
+}
+
+input TrendingSwapsFilter {
+  address: Trending_Comparator_Exp
+}
+
+# ─── XMTP ─────────────────────────────────────────────────────────────────────
+
+type Xmtp {
+  blockchain: EveryBlockchain
+  id: ID
+  isXMTPEnabled: Boolean
+  owner: Wallet
+}
+
+input XmtpFilter {
+  owner: Identity_Comparator_Exp
+}
+
+input XmtPsInput {
+  blockchain: EveryBlockchain!
+  cursor: String
+  filter: XmtpFilter!
+  limit: Int
+}
+
+input XmtPsNestedInput {
+  blockchain: EveryBlockchain
+  filter: XmtpFilter
+  limit: Int
+}
+
+type XmtPsOutput {
+  XMTP: [Xmtp]
+  pageInfo: PageInfo
+}
+
+# ─── NativeBalance ────────────────────────────────────────────────────────────
+
+type NativeBalance {
+  amount: String!
+  blockchain: NativeBalanceBlockchain
+  chainId: String!
+  formattedAmount: Float
+  id: ID!
+  lastUpdatedBlock: Int!
+  lastUpdatedTimestamp: Time
+  owner: Wallet!
+}
+
+# ─── ConnectedAddress / Media / Misc ─────────────────────────────────────────
+
+type ConnectedAddress {
+  address: Address
+  blockchain: String
+  chainId: String
+  timestamp: Time
+}
+
+type Media {
+  animation_url: AnimationUrlVariants
+  audio: AudioVariants
+  image: ImageSizes
+  json: String
+  video: VideoVariants
+}
+
+type ImageSizes {
+  extraSmall: String
+  large: String
+  medium: String
+  original: String
+  small: String
+}
+
+type AnimationUrlVariants {
+  original: String
+}
+
+type AudioVariants {
+  original: String
+}
+
+type VideoVariants {
+  original: String
+}
+
+# ─── Comparator Inputs ────────────────────────────────────────────────────────
+
+input AccountStandard_Comparator_Exp {
+  _eq: AccountStandard
+  _in: [AccountStandard]
+}
+
+input Address_Comparator_Exp {
+  _eq: Address
+  _in: [Address]
+  _ne: Address
+  _nin: [Address]
+}
+
+input Boolean_Comparator_Exp {
+  _eq: Boolean
+}
+
+input Date_Range_Comparator_Exp {
+  _eq: String
+}
+
+input FarcasterChannelActionType_Comparator_Exp {
+  _eq: FarcasterChannelActionType
+  _in: [FarcasterChannelActionType]
+}
+
+input Float_Comparator_Exp {
+  _eq: Float
+  _gt: Float
+  _gte: Float
+  _in: [Float]
+  _lt: Float
+  _lte: Float
+  _ne: Float
+  _nin: [Float]
+}
+
+input Identity_Comparator_Exp {
+  _eq: Identity
+  _in: [Identity]
+}
+
+input Int_Comparator_Exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int]
+  _lt: Int
+  _lte: Int
+  _ne: Int
+  _nin: [Int]
+}
+
+input PoapDappName_Comparator_Exp {
+  _eq: PoapDappName
+  _in: [PoapDappName]
+}
+
+input PoapDappSlug_Comparator_Exp {
+  _eq: PoapDappSlug
+  _in: [PoapDappSlug]
+}
+
+input Range_Comparator_Exp {
+  _eq: Int
+}
+
+input Regex_String_Comparator_Exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _in: [String]
+  _lt: String
+  _lte: String
+  _ne: String
+  _nin: [String]
+  _regex: String
+  _regex_in: [String]
+}
+
+input Simple_String_Comparator_Exp {
+  _eq: String
+  _in: [String]
+  _ne: String
+  _nin: [String]
+}
+
+input SocialDappName_Comparator_Exp {
+  _eq: SocialDappName
+  _in: [SocialDappName]
+}
+
+input SocialDappSlug_Comparator_Exp {
+  _eq: SocialDappSlug
+  _in: [SocialDappSlug]
+}
+
+input String_Comparator_Exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _in: [String]
+  _lt: String
+  _lte: String
+  _ne: String
+  _nin: [String]
+}
+
+input String_Eq_Comparator_Exp {
+  _eq: String
+}
+
+input String_Eq_In_Comparator_Exp {
+  _eq: String
+  _in: [String]
+}
+
+input Time_Comparator_Exp {
+  _eq: Time
+  _gt: Time
+  _gte: Time
+  _in: [Time]
+  _lt: Time
+  _lte: Time
+  _ne: Time
+  _nin: [Time]
+}
+
+input Time_Range_Comparator_Exp {
+  _eq: Int
+}
+
+input TokenType_Comparator_Exp {
+  _eq: TokenType
+  _in: [TokenType]
+}
+
+input TokenTransferType_Comparator_Exp {
+  _eq: TokenTransferType
+  _in: [TokenTransferType]
+}
+
+input TrendingCast_Int_Comparator_Exp {
+  _eq: Int
+}
+
+input Trending_Comparator_Exp {
+  _eq: Address
+  _in: [Address]
+}
+
+input DomainDappName_Comparator_Exp {
+  _eq: DomainDappName
+  _in: [DomainDappName]
+}
+
+input DomainDappSlug_Comparator_Exp {
+  _eq: DomainDappSlug
+  _in: [DomainDappSlug]
+}
