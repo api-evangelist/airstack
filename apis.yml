@@ -5,7 +5,7 @@ description: Airstack is a Web3 data aggregation platform providing GraphQL and 
   and cross-chain data in a single composable request. The platform indexes Ethereum,
   Polygon, Base, and other EVM-compatible chains, enabling complex cross-project queries
   without running your own infrastructure.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-06-13'
@@ -32,7 +32,7 @@ apis:
     identities, ENS names, POAP badges, and social graph data across Ethereum, Polygon,
     Base, and other EVM chains. Supports cross-chain and cross-project queries in
     a single request with cursor-based pagination.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
   tags:
@@ -72,7 +72,7 @@ apis:
     gRPC interfaces. Note that as of late 2024 Airstack has deprecated all Farcaster-related
     GraphQL APIs. Developers needing Farcaster data are directed to migrate to Neynar
     APIs, and Moxie-related data is available at developer.moxie.xyz.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.airstack.xyz/
   baseURL: https://hubs.airstack.xyz
   tags:
@@ -96,7 +96,7 @@ apis:
   description: Airstack Webhooks API allows developers to register HTTP callback endpoints
     to receive real-time Farcaster Hub events. Supports creating, listing, and deleting
     webhooks, as well as testing webhook filters against sample events.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.airstack.xyz/
   baseURL: https://webhooks.airstack.xyz
   tags:
