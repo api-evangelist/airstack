@@ -53,7 +53,7 @@ apis:
     url: https://docs.airstack.xyz/
   - type: Authentication
     url: https://docs.airstack.xyz/airstack-docs-and-faqs/get-api-key
-  - type: Quickstart
+  - type: GettingStarted
     url: https://docs.airstack.xyz/airstack-docs-and-faqs/basics
   - type: RateLimits
     url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/rate-limits/graphql-api.md
