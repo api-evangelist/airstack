@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: docs.airstack.xyz
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 21 13:44:22 2026 GMT
+  hsts: null
+- host: api.airstack.xyz
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 10 11:52:31 2026 GMT
+  hsts: null
+- host: hubs.airstack.xyz
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  6 23:02:27 2026 GMT
+  hsts: null
+domains:
+- domain: airstack.xyz
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine

@@ -114,6 +114,10 @@ apis:
     url: https://t.me/+1k3c2FR7z51mNDRh
     email: ''
 common:
+- type: DomainSecurity
+  url: security/airstack-domain-security.yml
+- type: Authentication
+  url: authentication/airstack-authentication.yml
 - type: JSONLDContext
   url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/json-ld/airstack-context.json
 - type: Vocabulary
