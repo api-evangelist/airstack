@@ -114,6 +114,8 @@ apis:
     url: https://t.me/+1k3c2FR7z51mNDRh
     email: ''
 common:
+- type: AgenticAccess
+  url: agentic-access/airstack-agentic-access.yml
 - type: DomainSecurity
   url: security/airstack-domain-security.yml
 - type: Authentication
