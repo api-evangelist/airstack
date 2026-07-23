@@ -1,0 +1,110 @@
+openapi: 3.0.1
+info:
+  title: Farcaster Hub REST Casts FIDs API
+  version: '1.0'
+  description: "Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the [Farcaster docs](https://www.thehubble.xyz/docs/httpapi/httpapi.html) for more details. Some client libraries:\n  - [TypeScript](https://www.npmjs.com/package/@standard-crypto/farcaster-js-hub-rest)\n"
+servers:
+- url: https://hubs.airstack.xyz
+security:
+- ApiKeyAuth: []
+tags:
+- name: FIDs
+paths:
+  /v1/fids:
+    get:
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - FIDs
+      operationId: ListFids
+      summary: Get a list of all the FIDs
+      parameters:
+      - $ref: '#/components/parameters/pageSize'
+      - $ref: '#/components/parameters/paginationReverse'
+      - $ref: '#/components/parameters/pageToken'
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FidsResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  responses:
+    ErrorResponse:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    paginationReverse:
+      name: reverse
+      in: query
+      description: Reverse the sort order, returning latest messages first
+      schema:
+        type: boolean
+    pageToken:
+      name: pageToken
+      in: query
+      description: The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      description: Maximum number of messages to return in a single response
+      schema:
+        type: integer
+  schemas:
+    FidsResponse:
+      type: object
+      properties:
+        fids:
+          type: array
+          items:
+            type: integer
+            format: uint64
+        nextPageToken:
+          pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+          type: string
+          format: byte
+      required:
+      - fids
+      - nextPageToken
+    ErrorResponse:
+      required:
+      - code
+      - details
+      - errCode
+      - metadata
+      - name
+      - presentable
+      type: object
+      properties:
+        errCode:
+          type: string
+        presentable:
+          type: boolean
+        name:
+          type: string
+        code:
+          type: integer
+        details:
+          type: string
+        metadata:
+          required:
+          - errcode
+          type: object
+          properties:
+            errcode:
+              type: array
+              items:
+                type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-airstack-hubs

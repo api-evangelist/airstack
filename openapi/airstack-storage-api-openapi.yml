@@ -1,0 +1,109 @@
+openapi: 3.0.1
+info:
+  title: Farcaster Hub REST Casts Storage API
+  version: '1.0'
+  description: "Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the [Farcaster docs](https://www.thehubble.xyz/docs/httpapi/httpapi.html) for more details. Some client libraries:\n  - [TypeScript](https://www.npmjs.com/package/@standard-crypto/farcaster-js-hub-rest)\n"
+servers:
+- url: https://hubs.airstack.xyz
+security:
+- ApiKeyAuth: []
+tags:
+- name: Storage
+paths:
+  /v1/storageLimitsByFid:
+    get:
+      security:
+      - ApiKeyAuth: []
+      tags:
+      - Storage
+      operationId: GetStorageLimitsByFid
+      summary: Get an FID's storage limits.
+      parameters:
+      - name: fid
+        in: query
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageLimitsResponse'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    StorageLimit:
+      type: object
+      properties:
+        storeType:
+          $ref: '#/components/schemas/StoreType'
+        limit:
+          type: integer
+          format: uint64
+      required:
+      - storeType
+      - limit
+    StorageLimitsResponse:
+      type: object
+      properties:
+        limits:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageLimit'
+      required:
+      - limits
+    StoreType:
+      type: string
+      default: STORE_TYPE_CASTS
+      enum:
+      - STORE_TYPE_CASTS
+      - STORE_TYPE_LINKS
+      - STORE_TYPE_REACTIONS
+      - STORE_TYPE_USER_DATA
+      - STORE_TYPE_VERIFICATIONS
+      - STORE_TYPE_USERNAME_PROOFS
+    ErrorResponse:
+      required:
+      - code
+      - details
+      - errCode
+      - metadata
+      - name
+      - presentable
+      type: object
+      properties:
+        errCode:
+          type: string
+        presentable:
+          type: boolean
+        name:
+          type: string
+        code:
+          type: integer
+        details:
+          type: string
+        metadata:
+          required:
+          - errcode
+          type: object
+          properties:
+            errcode:
+              type: array
+              items:
+                type: string
+  responses:
+    ErrorResponse:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-airstack-hubs
