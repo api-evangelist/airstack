@@ -5,7 +5,19 @@ description: Airstack is a Web3 data aggregation platform providing GraphQL and 
   and cross-chain data in a single composable request. The platform indexes Ethereum,
   Polygon, Base, and other EVM-compatible chains, enabling complex cross-project queries
   without running your own infrastructure.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/airstack.png
 url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-06-13'
@@ -27,11 +39,11 @@ tags:
 - Identity
 apis:
 - name: Airstack GraphQL API
-  description: The primary Airstack API offering composable GraphQL queries across
-    on-chain and off-chain Web3 data. Query NFT balances, token transfers, wallet
-    identities, ENS names, POAP badges, and social graph data across Ethereum, Polygon,
-    Base, and other EVM chains. Supports cross-chain and cross-project queries in
-    a single request with cursor-based pagination.
+  description: >-
+    The primary Airstack API offering composable GraphQL queries across on-chain and off-chain Web3 data.
+    Query NFT balances, token transfers, wallet identities, ENS names, POAP badges, and social graph data
+    across Ethereum, Polygon, Base, and other EVM chains. Supports cross-chain and cross-project queries
+    in a single request with cursor-based pagination.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
@@ -56,63 +68,201 @@ apis:
   - type: GettingStarted
     url: https://docs.airstack.xyz/airstack-docs-and-faqs/basics
   - type: RateLimits
-    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/rate-limits/graphql-api.md
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/rate-limits/graphql-api.md
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/plans/plans.md
   - type: FinOps
-    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/finops/finops.md
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/finops/finops.md
   - url: graphql/airstack-graphql.md
     type: GraphQL
   contact:
   - FN: Airstack Support
     url: https://t.me/+1k3c2FR7z51mNDRh
     email: ''
-- name: Airstack Farcaster Hub API
-  description: Airstack provides read/write access to Farcaster Hubs via REST and
-    gRPC interfaces. Note that as of late 2024 Airstack has deprecated all Farcaster-related
-    GraphQL APIs. Developers needing Farcaster data are directed to migrate to Neynar
-    APIs, and Moxie-related data is available at developer.moxie.xyz.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: airstack:airstack-casts-api
+  name: Airstack Casts API
+  description: The Casts API from Airstack — 4 operation(s) for casts.
   humanURL: https://docs.airstack.xyz/
-  baseURL: https://hubs.airstack.xyz
+  baseURL: https://api.airstack.xyz/graphql
   tags:
-  - Farcaster
-  - Social Graph
-  - REST
-  - gRPC
-  - Deprecated
+  - Casts
   properties:
+  - type: OpenAPI
+    url: openapi/airstack-casts-api-openapi.yml
   - type: Documentation
     url: https://docs.airstack.xyz/
   - type: DeprecationNotice
     url: https://docs.airstack.xyz/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/openapi/farcaster-hub-rest-api.json
-  contact:
-  - FN: Airstack Support
-    url: https://t.me/+1k3c2FR7z51mNDRh
-    email: ''
-- name: Airstack Farcaster Webhooks API
-  description: Airstack Webhooks API allows developers to register HTTP callback endpoints
-    to receive real-time Farcaster Hub events. Supports creating, listing, and deleting
-    webhooks, as well as testing webhook filters against sample events.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: airstack:airstack-fids-api
+  name: Airstack FIDs API
+  description: The FIDs API from Airstack — 1 operation(s) for fids.
   humanURL: https://docs.airstack.xyz/
-  baseURL: https://webhooks.airstack.xyz
+  baseURL: https://api.airstack.xyz/graphql
   tags:
-  - Farcaster
-  - Webhooks
-  - REST
-  - Events
+  - FIDs
   properties:
+  - type: OpenAPI
+    url: openapi/airstack-fids-api-openapi.yml
   - type: Documentation
     url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-hubevents-api
+  name: Airstack HubEvents API
+  description: The HubEvents API from Airstack — 2 operation(s) for hubevents.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - HubEvents
+  properties:
   - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/openapi/farcaster-webhooks-api.json
-  contact:
-  - FN: Airstack Support
-    url: https://t.me/+1k3c2FR7z51mNDRh
-    email: ''
+    url: openapi/airstack-hubevents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-links-api
+  name: Airstack Links API
+  description: The Links API from Airstack — 3 operation(s) for links.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - Links
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-links-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-onchainevents-api
+  name: Airstack OnChainEvents API
+  description: The OnChainEvents API from Airstack — 3 operation(s) for onchainevents.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - OnChainEvents
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-onchainevents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-reactions-api
+  name: Airstack Reactions API
+  description: The Reactions API from Airstack — 4 operation(s) for reactions.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - Reactions
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-reactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-storage-api
+  name: Airstack Storage API
+  description: The Storage API from Airstack — 1 operation(s) for storage.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - Storage
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-storage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-submitmessage-api
+  name: Airstack SubmitMessage API
+  description: The SubmitMessage API from Airstack — 1 operation(s) for submitmessage.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - SubmitMessage
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-submitmessage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-userdata-api
+  name: Airstack UserData API
+  description: The UserData API from Airstack — 1 operation(s) for userdata.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - UserData
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-userdata-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-usernames-api
+  name: Airstack Usernames API
+  description: The Usernames API from Airstack — 2 operation(s) for usernames.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - Usernames
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-usernames-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-validatemessage-api
+  name: Airstack ValidateMessage API
+  description: The ValidateMessage API from Airstack — 1 operation(s) for validatemessage.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - ValidateMessage
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-validatemessage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-verifications-api
+  name: Airstack Verifications API
+  description: The Verifications API from Airstack — 1 operation(s) for verifications.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - Verifications
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-verifications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-webhooks-api
+  name: Airstack Webhooks API
+  description: The Webhooks API from Airstack — 3 operation(s) for webhooks.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
 common:
 - type: AgenticAccess
   url: agentic-access/airstack-agentic-access.yml
