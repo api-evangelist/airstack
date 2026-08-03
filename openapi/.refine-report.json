@@ -1,0 +1,38 @@
+{
+  "provider": "airstack",
+  "sources": [
+    "airstack-casts-api-openapi.yml",
+    "airstack-fids-api-openapi.yml",
+    "airstack-hubevents-api-openapi.yml",
+    "airstack-links-api-openapi.yml",
+    "airstack-onchainevents-api-openapi.yml",
+    "airstack-reactions-api-openapi.yml",
+    "airstack-storage-api-openapi.yml",
+    "airstack-submitmessage-api-openapi.yml",
+    "airstack-userdata-api-openapi.yml",
+    "airstack-usernames-api-openapi.yml",
+    "airstack-validatemessage-api-openapi.yml",
+    "airstack-verifications-api-openapi.yml",
+    "airstack-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "airstack-casts-api-openapi.yml",
+    "airstack-fids-api-openapi.yml",
+    "airstack-hubevents-api-openapi.yml",
+    "airstack-links-api-openapi.yml",
+    "airstack-onchainevents-api-openapi.yml",
+    "airstack-reactions-api-openapi.yml",
+    "airstack-storage-api-openapi.yml",
+    "airstack-submitmessage-api-openapi.yml",
+    "airstack-userdata-api-openapi.yml",
+    "airstack-usernames-api-openapi.yml",
+    "airstack-validatemessage-api-openapi.yml",
+    "airstack-verifications-api-openapi.yml",
+    "airstack-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
