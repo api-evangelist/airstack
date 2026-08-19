@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Farcaster Hub REST Casts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-airstack-hubs",
+      "value": "{{x-airstack-hubs}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Casts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a cast by its FID and Hash.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/castById",
+            "params": [
+              {
+                "name": "fid",
+                "value": "6833",
+                "type": "query",
+                "description": "The FID of the cast's creator"
+              },
+              {
+                "name": "hash",
+                "value": "0xa48dd46161d8e57725f5e26e34ec19c13ff7f3b9",
+                "type": "query",
+                "description": "The cast's hash"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a cast by its FID and Hash."
+        },
+        {
+          "info": {
+            "name": "Fetch all casts authored by an FID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/castsByFid",
+            "params": [
+              {
+                "name": "fid",
+                "value": "6833",
+                "type": "query",
+                "description": "The FID of the casts' creator"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of messages to return in a single response"
+              },
+              {
+                "name": "reverse",
+                "value": "",
+                "type": "query",
+                "description": "Reverse the sort order, returning latest messages first"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch all casts authored by an FID."
+        },
+        {
+          "info": {
+            "name": "Fetch all casts that mention an FID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/castsByMention",
+            "params": [
+              {
+                "name": "fid",
+                "value": "6833",
+                "type": "query",
+                "description": "The FID that is mentioned in a cast"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of messages to return in a single response"
+              },
+              {
+                "name": "reverse",
+                "value": "",
+                "type": "query",
+                "description": "Reverse the sort order, returning latest messages first"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch all casts that mention an FID"
+        },
+        {
+          "info": {
+            "name": "Fetch all casts by parent cast's FID and Hash OR by the parent's URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/castsByParent",
+            "params": [
+              {
+                "name": "fid",
+                "value": "226",
+                "type": "query",
+                "description": "The FID of the parent cast"
+              },
+              {
+                "name": "hash",
+                "value": "0xa48dd46161d8e57725f5e26e34ec19c13ff7f3b9",
+                "type": "query",
+                "description": "The parent cast's hash"
+              },
+              {
+                "name": "url",
+                "value": "chain://eip155:1/erc721:0x39d89b649ffa044383333d297e325d42d31329b2",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of messages to return in a single response"
+              },
+              {
+                "name": "reverse",
+                "value": "",
+                "type": "query",
+                "description": "Reverse the sort order, returning latest messages first"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch all casts by parent cast's FID and Hash OR by the parent's URL"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

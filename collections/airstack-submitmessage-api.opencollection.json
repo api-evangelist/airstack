@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Farcaster Hub REST Casts SubmitMessage API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-airstack-hubs",
+      "value": "{{x-airstack-hubs}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SubmitMessage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit a signed protobuf-serialized message to the Hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hubs.airstack.xyz/v1/submitMessage",
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Submit a signed protobuf-serialized message to the Hub"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

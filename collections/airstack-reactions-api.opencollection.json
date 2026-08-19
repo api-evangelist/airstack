@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Farcaster Hub REST Casts Reactions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-airstack-hubs",
+      "value": "{{x-airstack-hubs}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a reaction by its created FID and target Cast.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/reactionById",
+            "params": [
+              {
+                "name": "fid",
+                "value": "",
+                "type": "query",
+                "description": "The FID of the reaction's creator"
+              },
+              {
+                "name": "target_fid",
+                "value": "",
+                "type": "query",
+                "description": "The FID of the cast's creator"
+              },
+              {
+                "name": "target_hash",
+                "value": "",
+                "type": "query",
+                "description": "The cast's hash"
+              },
+              {
+                "name": "reaction_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of reaction, either as a numerical enum value or string representation"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a reaction by its created FID and target Cast."
+        },
+        {
+          "info": {
+            "name": "Get all reactions to a cast",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/reactionsByCast",
+            "params": [
+              {
+                "name": "target_fid",
+                "value": "",
+                "type": "query",
+                "description": "The FID of the cast's creator"
+              },
+              {
+                "name": "target_hash",
+                "value": "",
+                "type": "query",
+                "description": "The hash of the cast"
+              },
+              {
+                "name": "reaction_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of reaction, either as a numerical enum value or string representation"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of messages to return in a single response"
+              },
+              {
+                "name": "reverse",
+                "value": "",
+                "type": "query",
+                "description": "Reverse the sort order, returning latest messages first"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all reactions to a cast"
+        },
+        {
+          "info": {
+            "name": "Get all reactions by an FID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/reactionsByFid",
+            "params": [
+              {
+                "name": "fid",
+                "value": "",
+                "type": "query",
+                "description": "The FID of the reaction's creator"
+              },
+              {
+                "name": "reaction_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of reaction, either as a numerical enum value or string representation"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of messages to return in a single response"
+              },
+              {
+                "name": "reverse",
+                "value": "",
+                "type": "query",
+                "description": "Reverse the sort order, returning latest messages first"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all reactions by an FID"
+        },
+        {
+          "info": {
+            "name": "Get all reactions to a target URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/reactionsByTarget",
+            "params": [
+              {
+                "name": "url",
+                "value": "chain://eip155:1/erc721:0x39d89b649ffa044383333d297e325d42d31329b2",
+                "type": "query",
+                "description": "The URL of the parent cast"
+              },
+              {
+                "name": "reaction_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of reaction, either as a numerical enum value or string representation"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of messages to return in a single response"
+              },
+              {
+                "name": "reverse",
+                "value": "",
+                "type": "query",
+                "description": "Reverse the sort order, returning latest messages first"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all reactions to a target URL"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

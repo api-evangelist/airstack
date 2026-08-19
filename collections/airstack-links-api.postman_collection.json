@@ -1,0 +1,651 @@
+{
+  "item": [
+    {
+      "id": "456f3e50-c0c8-4919-b2b8-4532ddfe06ba",
+      "name": "Links",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "98deebae-82ae-4c57-a8ea-13857927e608",
+          "name": "Get a link by its FID and target FID.",
+          "request": {
+            "name": "Get a link by its FID and target FID.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "linkById"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID of the link's originator"
+                },
+                {
+                  "disabled": false,
+                  "key": "target_fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID of the target of the link"
+                },
+                {
+                  "disabled": false,
+                  "key": "link_type",
+                  "value": "follow",
+                  "description": "(Required) The type of link, as a string value"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "85502c28-1850-4cbb-924d-a10409b08653",
+              "name": "The requested Link.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "linkById"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "target_fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "link_type",
+                      "value": "follow"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"fid\": 2,\n    \"linkBody\": {\n      \"type\": \"follow\",\n      \"targetFid\": 4257,\n      \"displayTimestamp\": 8061\n    },\n    \"network\": \"FARCASTER_NETWORK_MAINNET\",\n    \"timestamp\": 48994466,\n    \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n  },\n  \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n  \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n  \"signature\": \"n8Ows/sdqV7f\",\n  \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n  \"signer\": \"0x686cdedBD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e541b9c-ec11-4fd8-a911-d19bdd256e33",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "linkById"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "target_fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "link_type",
+                      "value": "follow"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1173,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24a06155-2c14-4207-afc9-d0003cefa0b8",
+          "name": "Get all links from a source FID",
+          "request": {
+            "name": "Get all links from a source FID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "linksByFid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID of the link's originator"
+                },
+                {
+                  "disabled": false,
+                  "key": "link_type",
+                  "value": "follow",
+                  "description": "The type of link, as a string value"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of messages to return in a single response"
+                },
+                {
+                  "disabled": false,
+                  "key": "reverse",
+                  "value": "<boolean>",
+                  "description": "Reverse the sort order, returning latest messages first"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1fde38fe-0fb9-4ebe-86ef-cfd1258c681f",
+              "name": "The requested Links.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "linksByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "link_type",
+                      "value": "follow"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"data\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"linkBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"UQSTUXVsxa0u0PYEzqLamrHdJz5L0+ZYbU==\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0x20aeF4249D1\"\n    },\n    {\n      \"data\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"linkBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"LII7xNTaZlHHHc1mW6o5fpie1LoTLzdjgEhQLt8e\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0x0D9961e\"\n    }\n  ],\n  \"nextPageToken\": \"aEIm\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b673538-c845-46f6-bddf-be8feca8a14f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "linksByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "link_type",
+                      "value": "follow"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9466,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b64fc4f-ee9a-45ea-85e1-89f9a6bea720",
+          "name": "Get all links to a target FID",
+          "request": {
+            "name": "Get all links to a target FID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "linksByTargetFid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "target_fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID of the target of the link"
+                },
+                {
+                  "disabled": false,
+                  "key": "link_type",
+                  "value": "follow",
+                  "description": "The type of link, as a string value"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of messages to return in a single response"
+                },
+                {
+                  "disabled": false,
+                  "key": "reverse",
+                  "value": "<boolean>",
+                  "description": "Reverse the sort order, returning latest messages first"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "085be12e-c172-463e-80b7-e00bd88da876",
+              "name": "The requested Links.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "linksByTargetFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "link_type",
+                      "value": "follow"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"data\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"linkBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"UQSTUXVsxa0u0PYEzqLamrHdJz5L0+ZYbU==\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0x20aeF4249D1\"\n    },\n    {\n      \"data\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"linkBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"LII7xNTaZlHHHc1mW6o5fpie1LoTLzdjgEhQLt8e\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0x0D9961e\"\n    }\n  ],\n  \"nextPageToken\": \"aEIm\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42c1c2ed-a982-4b73-a6b9-616d4c41b607",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "linksByTargetFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "link_type",
+                      "value": "follow"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9466,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hubs.airstack.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-airstack-hubs"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0ba3e843-4b72-4a85-9a8d-331d8fe5b9ca",
+    "name": "Farcaster Hub REST Casts Links API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the [Farcaster docs](https://www.thehubble.xyz/docs/httpapi/httpapi.html) for more details. Some client libraries:\n  - [TypeScript](https://www.npmjs.com/package/@standard-crypto/farcaster-js-hub-rest)\n",
+      "type": "text/plain"
+    }
+  }
+}

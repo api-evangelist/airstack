@@ -1,0 +1,262 @@
+{
+  "item": [
+    {
+      "id": "96c91f6d-ca17-48c3-b5c5-d5aef6c96ec9",
+      "name": "UserData",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cc838909-4704-4597-afe2-6711ea15a7a1",
+          "name": "Get UserData for a FID.",
+          "request": {
+            "name": "Get UserData for a FID.",
+            "description": {
+              "content": "**Note:** one of two different response schemas is returned based on whether the caller provides the `user_data_type` parameter. If included, a single `UserDataAdd` message is returned (or a `not_found` error). If omitted, a paginated list of `UserDataAdd` messages is returned instead",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "userDataByFid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID that's being requested"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_data_type",
+                  "value": "USER_DATA_TYPE_PFP",
+                  "description": "The type of user data, either as a numerical value or type string. If this is omitted, all user data for the FID is returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of messages to return in a single response"
+                },
+                {
+                  "disabled": false,
+                  "key": "reverse",
+                  "value": "<boolean>",
+                  "description": "Reverse the sort order, returning latest messages first"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b14ab7ff-8191-4e03-b024-74d7a85a4be0",
+              "name": "The requested UserData.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "userDataByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "user_data_type",
+                      "value": "USER_DATA_TYPE_PFP"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"fid\": 2,\n    \"network\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"timestamp\": 48994466,\n    \"type\": \"MESSAGE_TYPE_CAST_ADD\",\n    \"userDataBody\": {\n      \"type\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"value\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  },\n  \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n  \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n  \"signature\": \"zH8uwOr3GgC3n3qbMJU0JtiQcCqSis2B\",\n  \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n  \"signer\": \"0xD95b4FcD3AC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69fb3ee9-8f15-4f6e-a0f7-c78eb4db241c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "userDataByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "user_data_type",
+                      "value": "USER_DATA_TYPE_PFP"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 243,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hubs.airstack.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-airstack-hubs"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ac99013e-3ff1-44d0-9477-a938570d1248",
+    "name": "Farcaster Hub REST Casts UserData API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the [Farcaster docs](https://www.thehubble.xyz/docs/httpapi/httpapi.html) for more details. Some client libraries:\n  - [TypeScript](https://www.npmjs.com/package/@standard-crypto/farcaster-js-hub-rest)\n",
+      "type": "text/plain"
+    }
+  }
+}

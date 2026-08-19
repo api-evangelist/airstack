@@ -1,0 +1,832 @@
+{
+  "item": [
+    {
+      "id": "f0d534d4-4ddd-4991-ac9f-75c414b5672f",
+      "name": "Casts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2cf750e5-c2d4-478a-a0c5-a232880ae33d",
+          "name": "Get a cast by its FID and Hash.",
+          "request": {
+            "name": "Get a cast by its FID and Hash.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "castById"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID of the cast's creator"
+                },
+                {
+                  "disabled": false,
+                  "key": "hash",
+                  "value": "<string>",
+                  "description": "(Required) The cast's hash"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "40773651-f8b9-4066-b181-1c35c11e80f8",
+              "name": "The requested Cast.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "castById"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "6833"
+                    },
+                    {
+                      "key": "hash",
+                      "value": "0xa48dd46161d8e57725f5e26e34ec19c13ff7f3b9"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"castAddBody\": {\n      \"embedsDeprecated\": [\n        \"string\",\n        \"string\"\n      ],\n      \"mentions\": [\n        2,\n        2\n      ],\n      \"text\": \"string\",\n      \"mentionsPositions\": [\n        4962,\n        7463\n      ],\n      \"embeds\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"parentCastId\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hash\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"parentUrl\": \"chain://eip155:1/erc721:0x39d89b649ffa044383333d297e325d42d31329b2\"\n    },\n    \"fid\": 2,\n    \"network\": \"FARCASTER_NETWORK_MAINNET\",\n    \"timestamp\": 48994466,\n    \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n  },\n  \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n  \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n  \"signature\": \"0eMySOYvtvo8H2W8VvZYW32PQ00wi7julwe=\",\n  \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n  \"signer\": \"0xe\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "817e04db-7d39-40e5-8bf2-3ec319719aa0",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "castById"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "6833"
+                    },
+                    {
+                      "key": "hash",
+                      "value": "0xa48dd46161d8e57725f5e26e34ec19c13ff7f3b9"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2248,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0cc13a81-7eee-4701-9aff-be6b47f90765",
+          "name": "Fetch all casts authored by an FID.",
+          "request": {
+            "name": "Fetch all casts authored by an FID.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "castsByFid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID of the casts' creator"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of messages to return in a single response"
+                },
+                {
+                  "disabled": false,
+                  "key": "reverse",
+                  "value": "<boolean>",
+                  "description": "Reverse the sort order, returning latest messages first"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1ded687c-5a52-4794-895f-3f2f6849a34a",
+              "name": "The requested Casts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "castsByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "6833"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"data\": {\n        \"castAddBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"PvZxJUmNZGZW\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0xF258bD1A4\"\n    },\n    {\n      \"data\": {\n        \"castAddBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"OphU\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0xC6e06\"\n    }\n  ],\n  \"nextPageToken\": \"qYZoMVB9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1270e6bc-4649-4d3a-b986-9c4e52e9026d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "castsByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "6833"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7150,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff9cc934-08df-49fb-9f67-3f3e31d75d5a",
+          "name": "Fetch all casts that mention an FID",
+          "request": {
+            "name": "Fetch all casts that mention an FID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "castsByMention"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID that is mentioned in a cast"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of messages to return in a single response"
+                },
+                {
+                  "disabled": false,
+                  "key": "reverse",
+                  "value": "<boolean>",
+                  "description": "Reverse the sort order, returning latest messages first"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd16476d-1be9-4509-a8c7-69c1693a740e",
+              "name": "The requested Casts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "castsByMention"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "6833"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"data\": {\n        \"castAddBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"PvZxJUmNZGZW\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0xF258bD1A4\"\n    },\n    {\n      \"data\": {\n        \"castAddBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"OphU\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0xC6e06\"\n    }\n  ],\n  \"nextPageToken\": \"qYZoMVB9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07e8a089-f458-4a02-af81-61f9b98a7998",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "castsByMention"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "6833"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7150,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f48a8934-3daf-4f9c-a2a1-ccaea9dabf72",
+          "name": "Fetch all casts by parent cast's FID and Hash OR by the parent's URL",
+          "request": {
+            "name": "Fetch all casts by parent cast's FID and Hash OR by the parent's URL",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "castsByParent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "The FID of the parent cast"
+                },
+                {
+                  "disabled": false,
+                  "key": "hash",
+                  "value": "<string>",
+                  "description": "The parent cast's hash"
+                },
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of messages to return in a single response"
+                },
+                {
+                  "disabled": false,
+                  "key": "reverse",
+                  "value": "<boolean>",
+                  "description": "Reverse the sort order, returning latest messages first"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "740a6021-2e85-4f4c-8667-ed70a3ae55d4",
+              "name": "The requested Casts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "castsByParent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "226"
+                    },
+                    {
+                      "key": "hash",
+                      "value": "0xa48dd46161d8e57725f5e26e34ec19c13ff7f3b9"
+                    },
+                    {
+                      "key": "url",
+                      "value": "chain://eip155:1/erc721:0x39d89b649ffa044383333d297e325d42d31329b2"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"data\": {\n        \"castAddBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"PvZxJUmNZGZW\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0xF258bD1A4\"\n    },\n    {\n      \"data\": {\n        \"castAddBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"OphU\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0xC6e06\"\n    }\n  ],\n  \"nextPageToken\": \"qYZoMVB9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20ee1956-2a56-4135-baf1-a32cd84a165f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "castsByParent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "226"
+                    },
+                    {
+                      "key": "hash",
+                      "value": "0xa48dd46161d8e57725f5e26e34ec19c13ff7f3b9"
+                    },
+                    {
+                      "key": "url",
+                      "value": "chain://eip155:1/erc721:0x39d89b649ffa044383333d297e325d42d31329b2"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7150,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hubs.airstack.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-airstack-hubs"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "18e0587e-9b4b-441b-b353-399db906bcf1",
+    "name": "Farcaster Hub REST Casts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the [Farcaster docs](https://www.thehubble.xyz/docs/httpapi/httpapi.html) for more details. Some client libraries:\n  - [TypeScript](https://www.npmjs.com/package/@standard-crypto/farcaster-js-hub-rest)\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,889 @@
+{
+  "item": [
+    {
+      "id": "abf80517-5614-45b2-9660-ac611a328685",
+      "name": "Reactions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cea13d7b-e336-4eec-a7a4-c9c54026e3b6",
+          "name": "Get a reaction by its created FID and target Cast.",
+          "request": {
+            "name": "Get a reaction by its created FID and target Cast.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "reactionById"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID of the reaction's creator"
+                },
+                {
+                  "disabled": false,
+                  "key": "target_fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID of the cast's creator"
+                },
+                {
+                  "disabled": false,
+                  "key": "target_hash",
+                  "value": "<string>",
+                  "description": "(Required) The cast's hash"
+                },
+                {
+                  "disabled": false,
+                  "key": "reaction_type",
+                  "value": "REACTION_TYPE_LIKE",
+                  "description": "(Required) The type of reaction, either as a numerical enum value or string representation"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ae5fe7c1-5759-47d3-8876-fff6309514d8",
+              "name": "The requested Reaction.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reactionById"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "target_fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "target_hash",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reaction_type",
+                      "value": "REACTION_TYPE_LIKE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"fid\": 2,\n    \"network\": \"FARCASTER_NETWORK_MAINNET\",\n    \"reactionBody\": {\n      \"type\": \"REACTION_TYPE_LIKE\",\n      \"targetCastId\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hash\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"targetUrl\": \"string\"\n    },\n    \"timestamp\": 48994466,\n    \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n  },\n  \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n  \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n  \"signature\": \"\",\n  \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n  \"signer\": \"0xF8cc1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9da2789-1021-4bb7-8cd9-70833e89b11b",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reactionById"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "target_fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "target_hash",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reaction_type",
+                      "value": "REACTION_TYPE_LIKE"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5825,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01c94513-1393-4f77-b10a-652d9235e6ff",
+          "name": "Get all reactions to a cast",
+          "request": {
+            "name": "Get all reactions to a cast",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "reactionsByCast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "target_fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID of the cast's creator"
+                },
+                {
+                  "disabled": false,
+                  "key": "target_hash",
+                  "value": "<string>",
+                  "description": "(Required) The hash of the cast"
+                },
+                {
+                  "disabled": false,
+                  "key": "reaction_type",
+                  "value": "REACTION_TYPE_LIKE",
+                  "description": "(Required) The type of reaction, either as a numerical enum value or string representation"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of messages to return in a single response"
+                },
+                {
+                  "disabled": false,
+                  "key": "reverse",
+                  "value": "<boolean>",
+                  "description": "Reverse the sort order, returning latest messages first"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8e97eff0-4718-4d62-82b0-718558e3305b",
+              "name": "The requested Reactions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reactionsByCast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "target_hash",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reaction_type",
+                      "value": "REACTION_TYPE_LIKE"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"data\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"reactionBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"JtzjiPQcOgq52WpJWOAlMoelEXuWpS==\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0xed31\"\n    },\n    {\n      \"data\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"reactionBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"2+rw6cSKXDu7jsyinzS7Dc==\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0x560B0\"\n    }\n  ],\n  \"nextPageToken\": \"HtZquKqcNDa+HwpQe2Z3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f2da10f-1408-44db-af78-e67381c715a7",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reactionsByCast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "target_hash",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reaction_type",
+                      "value": "REACTION_TYPE_LIKE"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1720,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b588378-c04f-4dc8-ac5c-5cc16adfbf68",
+          "name": "Get all reactions by an FID",
+          "request": {
+            "name": "Get all reactions by an FID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "reactionsByFid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID of the reaction's creator"
+                },
+                {
+                  "disabled": false,
+                  "key": "reaction_type",
+                  "value": "REACTION_TYPE_LIKE",
+                  "description": "(Required) The type of reaction, either as a numerical enum value or string representation"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of messages to return in a single response"
+                },
+                {
+                  "disabled": false,
+                  "key": "reverse",
+                  "value": "<boolean>",
+                  "description": "Reverse the sort order, returning latest messages first"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dc6b5e3a-6c3b-4d47-bf14-65ff2c64c1ed",
+              "name": "The requested Reactions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reactionsByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reaction_type",
+                      "value": "REACTION_TYPE_LIKE"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"data\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"reactionBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"JtzjiPQcOgq52WpJWOAlMoelEXuWpS==\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0xed31\"\n    },\n    {\n      \"data\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"reactionBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"2+rw6cSKXDu7jsyinzS7Dc==\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0x560B0\"\n    }\n  ],\n  \"nextPageToken\": \"HtZquKqcNDa+HwpQe2Z3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87b4716b-5ac3-4e77-95bd-9024e0469450",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reactionsByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reaction_type",
+                      "value": "REACTION_TYPE_LIKE"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1720,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b56c64af-6630-4956-8795-ae2b5b72600b",
+          "name": "Get all reactions to a target URL",
+          "request": {
+            "name": "Get all reactions to a target URL",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "reactionsByTarget"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "url",
+                  "value": "<string>",
+                  "description": "(Required) The URL of the parent cast"
+                },
+                {
+                  "disabled": false,
+                  "key": "reaction_type",
+                  "value": "REACTION_TYPE_LIKE",
+                  "description": "(Required) The type of reaction, either as a numerical enum value or string representation"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>",
+                  "description": "Maximum number of messages to return in a single response"
+                },
+                {
+                  "disabled": false,
+                  "key": "reverse",
+                  "value": "<boolean>",
+                  "description": "Reverse the sort order, returning latest messages first"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>",
+                  "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "adc9c5c8-1962-4a2f-b78e-0282db10770b",
+              "name": "The requested Reactions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reactionsByTarget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "chain://eip155:1/erc721:0x39d89b649ffa044383333d297e325d42d31329b2"
+                    },
+                    {
+                      "key": "reaction_type",
+                      "value": "REACTION_TYPE_LIKE"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"data\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"reactionBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"JtzjiPQcOgq52WpJWOAlMoelEXuWpS==\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0xed31\"\n    },\n    {\n      \"data\": {\n        \"fid\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"network\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"reactionBody\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timestamp\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": \"MESSAGE_TYPE_CAST_ADD\"\n      },\n      \"hash\": \"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\n      \"hashScheme\": \"HASH_SCHEME_BLAKE3\",\n      \"signature\": \"2+rw6cSKXDu7jsyinzS7Dc==\",\n      \"signatureScheme\": \"SIGNATURE_SCHEME_ED25519\",\n      \"signer\": \"0x560B0\"\n    }\n  ],\n  \"nextPageToken\": \"HtZquKqcNDa+HwpQe2Z3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce3c56b4-c953-4988-a154-a13db44982a7",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "reactionsByTarget"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "url",
+                      "value": "chain://eip155:1/erc721:0x39d89b649ffa044383333d297e325d42d31329b2"
+                    },
+                    {
+                      "key": "reaction_type",
+                      "value": "REACTION_TYPE_LIKE"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "reverse",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1720,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hubs.airstack.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-airstack-hubs"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c4a22cc5-86ca-42d4-b93c-04fd67bfed88",
+    "name": "Farcaster Hub REST Casts Reactions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the [Farcaster docs](https://www.thehubble.xyz/docs/httpapi/httpapi.html) for more details. Some client libraries:\n  - [TypeScript](https://www.npmjs.com/package/@standard-crypto/farcaster-js-hub-rest)\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Farcaster Hub REST Casts ValidateMessage API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-airstack-hubs",
+      "value": "{{x-airstack-hubs}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ValidateMessage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate a signed protobuf-serialized message with the Hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hubs.airstack.xyz/v1/validateMessage",
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Validate a signed protobuf-serialized message with the Hub"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

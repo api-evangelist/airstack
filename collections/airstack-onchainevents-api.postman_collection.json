@@ -1,0 +1,542 @@
+{
+  "item": [
+    {
+      "id": "0a60a0a0-fb85-4496-974d-33cd48a422e4",
+      "name": "OnChainEvents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "81343211-a2d5-4443-bc35-5fdf4cb6261d",
+          "name": "Get an on chain ID Registry Event for a given Address",
+          "request": {
+            "name": "Get an on chain ID Registry Event for a given Address",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "onChainIdRegistryEventByAddress"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "(Required) The ETH address being requested"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a488c13e-dbea-4f18-9806-0b839a68b670",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onChainIdRegistryEventByAddress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"blockHash\": \"0x75fbbb8b2a4ede67ac350e1b0503c6a152c0091bd8e3ef4a6927d58e088eae28\",\n  \"blockNumber\": 8364,\n  \"blockTimestamp\": 2073,\n  \"chainId\": 3328,\n  \"fid\": 2279,\n  \"idRegisterEventBody\": {\n    \"to\": \"0x00000000fcd5a8e45785c8a4b9a718c9348e4f18\",\n    \"from\": \"0x00000000fcd5a8e45785c8a4b9a718c9348e4f18\",\n    \"eventType\": \"ID_REGISTER_EVENT_TYPE_REGISTER\",\n    \"recoveryAddress\": \"0x00000000fcd5a8e45785c8a4b9a718c9348e4f18\"\n  },\n  \"logIndex\": 4687,\n  \"transactionHash\": \"0x36ef79e6c460e6ae251908be13116ff0065960adb1ae032b4cc65a8352f28952\",\n  \"txIndex\": 3757,\n  \"type\": \"EVENT_TYPE_SIGNER\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15716e0c-ec7f-4fad-be71-d0a02b612b72",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onChainIdRegistryEventByAddress"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5806,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3539a7c-d7b5-44fe-9141-e805dd0d1124",
+          "name": "Get a list of on-chain events provided by an FID",
+          "request": {
+            "name": "Get a list of on-chain events provided by an FID",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "onChainEventsByFid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID being requested"
+                },
+                {
+                  "disabled": false,
+                  "key": "event_type",
+                  "value": "EVENT_TYPE_SIGNER",
+                  "description": "(Required) The numeric of string value of the event type being requested."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d9950afe-0f05-4cb4-8e1d-0d85bab71dbd",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onChainEventsByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "event_type",
+                      "value": "EVENT_TYPE_SIGNER"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"blockHash\": \"0x75fbbb8b2a4ede67ac350e1b0503c6a152c0091bd8e3ef4a6927d58e088eae28\",\n      \"blockNumber\": 5472,\n      \"blockTimestamp\": 2999,\n      \"chainId\": 5947,\n      \"fid\": 4240,\n      \"logIndex\": 9110,\n      \"signerEventBody\": {\n        \"key\": \"0x707DecC8A1D91E1F9424B955dC1d0d195E0Bc21fb24D8dCDf2E9F493ced4cCcb\",\n        \"keyType\": 3791,\n        \"eventType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"metadata\": \"NZx4OsOlSquH6LX4s0fiWyA+\",\n        \"metadataType\": 2393\n      },\n      \"transactionHash\": \"0x36ef79e6c460e6ae251908be13116ff0065960adb1ae032b4cc65a8352f28952\",\n      \"txIndex\": 7741,\n      \"type\": \"EVENT_TYPE_SIGNER\"\n    },\n    {\n      \"blockHash\": \"0x75fbbb8b2a4ede67ac350e1b0503c6a152c0091bd8e3ef4a6927d58e088eae28\",\n      \"blockNumber\": 5207,\n      \"blockTimestamp\": 5840,\n      \"chainId\": 2059,\n      \"fid\": 4138,\n      \"logIndex\": 4904,\n      \"signerEventBody\": {\n        \"key\": \"0xF3CAe2436Db4C9F7EcF5d04DAfEAEc8FC4f97c1c211AbD248374ABCb46258BcE\",\n        \"keyType\": 851,\n        \"eventType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"metadata\": \"qrqxfm9CS67RLCnke03qYwZVkeKzwN==\",\n        \"metadataType\": 3012\n      },\n      \"transactionHash\": \"0x36ef79e6c460e6ae251908be13116ff0065960adb1ae032b4cc65a8352f28952\",\n      \"txIndex\": 3243,\n      \"type\": \"EVENT_TYPE_SIGNER\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb0eb7b3-e57d-4458-935f-115aff364742",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onChainEventsByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "event_type",
+                      "value": "EVENT_TYPE_SIGNER"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 576,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21148bd0-1fd9-47c9-bce4-e0d5a6b7f77c",
+          "name": "Get a list of signers provided by an FID",
+          "request": {
+            "name": "Get a list of signers provided by an FID",
+            "description": {
+              "content": "**Note:** one of two different response schemas is returned based on whether the caller provides the `signer` parameter. If included, a single `OnChainEventSigner` message is returned (or a `not_found` error). If omitted, a non-paginated list of `OnChainEventSigner` messages is returned instead",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "onChainSignersByFid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fid",
+                  "value": "<integer>",
+                  "description": "(Required) The FID being requested"
+                },
+                {
+                  "disabled": false,
+                  "key": "signer",
+                  "value": "<string>",
+                  "description": "The optional key of signer"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-airstack-hubs"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b62a441-c405-4916-bf16-0c78e5126eb3",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onChainSignersByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "signer",
+                      "value": "0x0852c07b5695ff94138b025e3f9b4788e06133f04e254f0ea0eb85a06e999cdd"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"blockHash\": \"0x75fbbb8b2a4ede67ac350e1b0503c6a152c0091bd8e3ef4a6927d58e088eae28\",\n  \"blockNumber\": 1812,\n  \"blockTimestamp\": 9811,\n  \"chainId\": 806,\n  \"fid\": 1881,\n  \"logIndex\": 8129,\n  \"signerEventBody\": {\n    \"key\": \"0x6e98ca1Aa4302b4ee40CAE28d8aBc3Af4eB71FBA750D5FbeCc4c2E1edBfED6D8\",\n    \"keyType\": 9429,\n    \"eventType\": \"SIGNER_EVENT_TYPE_ADD\",\n    \"metadata\": \"9T46FcjcFzctt80jjVo4zb7gHFuR8z7JPsmquA==\",\n    \"metadataType\": 9105\n  },\n  \"transactionHash\": \"0x36ef79e6c460e6ae251908be13116ff0065960adb1ae032b4cc65a8352f28952\",\n  \"txIndex\": 9360,\n  \"type\": \"EVENT_TYPE_SIGNER\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04d85e94-5b36-456c-a6fe-6192790e592c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "onChainSignersByFid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fid",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "signer",
+                      "value": "0x0852c07b5695ff94138b025e3f9b4788e06133f04e254f0ea0eb85a06e999cdd"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-airstack-hubs",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 576,\n  \"details\": \"string\",\n  \"errCode\": \"string\",\n  \"metadata\": {\n    \"errcode\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"name\": \"string\",\n  \"presentable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://hubs.airstack.xyz",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-airstack-hubs"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "72e716db-7082-4fd5-a4f8-6c572c28c571",
+    "name": "Farcaster Hub REST Casts OnChainEvents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the [Farcaster docs](https://www.thehubble.xyz/docs/httpapi/httpapi.html) for more details. Some client libraries:\n  - [TypeScript](https://www.npmjs.com/package/@standard-crypto/farcaster-js-hub-rest)\n",
+      "type": "text/plain"
+    }
+  }
+}

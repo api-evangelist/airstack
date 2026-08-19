@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Farcaster Hub REST Casts Links API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-airstack-hubs",
+      "value": "{{x-airstack-hubs}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a link by its FID and target FID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/linkById",
+            "params": [
+              {
+                "name": "fid",
+                "value": "",
+                "type": "query",
+                "description": "The FID of the link's originator"
+              },
+              {
+                "name": "target_fid",
+                "value": "",
+                "type": "query",
+                "description": "The FID of the target of the link"
+              },
+              {
+                "name": "link_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of link, as a string value"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a link by its FID and target FID."
+        },
+        {
+          "info": {
+            "name": "Get all links from a source FID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/linksByFid",
+            "params": [
+              {
+                "name": "fid",
+                "value": "",
+                "type": "query",
+                "description": "The FID of the link's originator"
+              },
+              {
+                "name": "link_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of link, as a string value"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of messages to return in a single response"
+              },
+              {
+                "name": "reverse",
+                "value": "",
+                "type": "query",
+                "description": "Reverse the sort order, returning latest messages first"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all links from a source FID"
+        },
+        {
+          "info": {
+            "name": "Get all links to a target FID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/linksByTargetFid",
+            "params": [
+              {
+                "name": "target_fid",
+                "value": "",
+                "type": "query",
+                "description": "The FID of the target of the link"
+              },
+              {
+                "name": "link_type",
+                "value": "",
+                "type": "query",
+                "description": "The type of link, as a string value"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of messages to return in a single response"
+              },
+              {
+                "name": "reverse",
+                "value": "",
+                "type": "query",
+                "description": "Reverse the sort order, returning latest messages first"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all links to a target FID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Farcaster Hub REST Casts Webhooks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-airstack-hubs",
+      "value": "{{x-airstack-hubs}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a new webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hubs.airstack.xyz/api/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new webhook."
+        },
+        {
+          "info": {
+            "name": "Validate webhook filter configuration.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://hubs.airstack.xyz/api/v1/filters/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Validate webhook filter configuration."
+        },
+        {
+          "info": {
+            "name": "Delete an existing webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://hubs.airstack.xyz/api/v1/webhooks/:webhook_id",
+            "params": [
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path",
+                "description": "The webhook ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete an existing webhook."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

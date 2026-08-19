@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Farcaster Hub REST Casts HubEvents API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-airstack-hubs",
+      "value": "{{x-airstack-hubs}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HubEvents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a page of Hub events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/events",
+            "params": [
+              {
+                "name": "from_event_id",
+                "value": "",
+                "type": "query",
+                "description": "An optional Hub Id to start getting events from. This is also returned from the API as nextPageEventId, which can be used to page through all the Hub events. Set it to 0 to start from the first event"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a page of Hub events"
+        },
+        {
+          "info": {
+            "name": "Get an event by its ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/eventById",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "query",
+                "description": "The Hub Id of the event"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get an event by its ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

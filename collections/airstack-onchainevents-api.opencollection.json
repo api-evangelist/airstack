@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Farcaster Hub REST Casts OnChainEvents API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-airstack-hubs",
+      "value": "{{x-airstack-hubs}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OnChainEvents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an on chain ID Registry Event for a given Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/onChainIdRegistryEventByAddress",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "The ETH address being requested"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get an on chain ID Registry Event for a given Address"
+        },
+        {
+          "info": {
+            "name": "Get a list of on-chain events provided by an FID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/onChainEventsByFid",
+            "params": [
+              {
+                "name": "fid",
+                "value": "",
+                "type": "query",
+                "description": "The FID being requested"
+              },
+              {
+                "name": "event_type",
+                "value": "",
+                "type": "query",
+                "description": "The numeric of string value of the event type being requested."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a list of on-chain events provided by an FID"
+        },
+        {
+          "info": {
+            "name": "Get a list of signers provided by an FID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://hubs.airstack.xyz/v1/onChainSignersByFid",
+            "params": [
+              {
+                "name": "fid",
+                "value": "",
+                "type": "query",
+                "description": "The FID being requested"
+              },
+              {
+                "name": "signer",
+                "value": "0x0852c07b5695ff94138b025e3f9b4788e06133f04e254f0ea0eb85a06e999cdd",
+                "type": "query",
+                "description": "The optional key of signer"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-airstack-hubs",
+              "value": "{{x-airstack-hubs}}",
+              "placement": "header"
+            }
+          },
+          "docs": "**Note:** one of two different response schemas is returned based on whether the caller provides the `signer` parameter. If included, a single `OnChainEventSigner` message is returned (or a `not_found` error). If omitted, a non-paginated list of `OnChainEventSigner` messages is returned instead"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
