@@ -35,6 +35,21 @@ tags:
 - ENS
 - POAP
 - Social Graph
+- Wallets
+- Identity
+tags_raw:
+- Web3
+- Blockchain
+- GraphQL
+- NFT
+- Tokens
+- On-Chain Data
+- Ethereum
+- Polygon
+- Base
+- ENS
+- POAP
+- Social Graph
 - Wallet
 - Identity
 apis:
@@ -48,6 +63,19 @@ apis:
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
   tags:
+  - GraphQL
+  - Web3
+  - NFT
+  - Tokens
+  - Blockchain
+  - Ethereum
+  - Polygon
+  - Base
+  - ENS
+  - POAP
+  - Identity
+  - Wallets
+  tags_raw:
   - GraphQL
   - Web3
   - NFT
@@ -199,6 +227,8 @@ apis:
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
   tags:
+  - User Data
+  tags_raw:
   - UserData
   properties:
   - type: OpenAPI
@@ -213,6 +243,8 @@ apis:
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
   tags:
+  - User Names
+  tags_raw:
   - Usernames
   properties:
   - type: OpenAPI
@@ -241,6 +273,8 @@ apis:
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
   tags:
+  - Verification
+  tags_raw:
   - Verifications
   properties:
   - type: OpenAPI
@@ -255,6 +289,8 @@ apis:
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
