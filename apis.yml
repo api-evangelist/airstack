@@ -239,7 +239,7 @@ apis:
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
   tags:
-  - UserData
+  - User Data
   tags_raw:
   - UserData
   properties:
@@ -255,7 +255,7 @@ apis:
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
   tags:
-  - Usernames
+  - User Names
   tags_raw:
   - Usernames
   properties:
@@ -285,7 +285,7 @@ apis:
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
   tags:
-  - Verifications
+  - Verification
   tags_raw:
   - Verifications
   properties:
