@@ -1,10 +1,9 @@
 name: Airstack
-description: Airstack is a Web3 data aggregation platform providing GraphQL and REST
-  APIs for querying on-chain and off-chain data across multiple blockchains. Developers
-  can query NFT ownership, token balances, wallet identities, ENS names, POAP badges,
-  and cross-chain data in a single composable request. The platform indexes Ethereum,
-  Polygon, Base, and other EVM-compatible chains, enabling complex cross-project queries
-  without running your own infrastructure.
+description: Airstack is a Web3 data aggregation platform providing GraphQL and REST APIs for querying
+  on-chain and off-chain data across multiple blockchains. Developers can query NFT ownership, token balances,
+  wallet identities, ENS names, POAP badges, and cross-chain data in a single composable request. The
+  platform indexes Ethereum, Polygon, Base, and other EVM-compatible chains, enabling complex cross-project
+  queries without running your own infrastructure.
 deliveryModel:
   model: saas
   open_source: false
@@ -33,7 +32,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/airstack.png
 url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-06-13'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 tags:
 - Web3
@@ -67,11 +66,10 @@ tags_raw:
 - Identity
 apis:
 - name: Airstack GraphQL API
-  description: >-
-    The primary Airstack API offering composable GraphQL queries across on-chain and off-chain Web3 data.
-    Query NFT balances, token transfers, wallet identities, ENS names, POAP badges, and social graph data
-    across Ethereum, Polygon, Base, and other EVM chains. Supports cross-chain and cross-project queries
-    in a single request with cursor-based pagination.
+  description: The primary Airstack API offering composable GraphQL queries across on-chain and off-chain
+    Web3 data. Query NFT balances, token transfers, wallet identities, ENS names, POAP badges, and social
+    graph data across Ethereum, Polygon, Base, and other EVM chains. Supports cross-chain and cross-project
+    queries in a single request with cursor-based pagination.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
@@ -109,13 +107,11 @@ apis:
   - type: GettingStarted
     url: https://docs.airstack.xyz/airstack-docs-and-faqs/basics
   - type: RateLimits
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/rate-limits/graphql-api.md
+    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/rate-limits/graphql-api.md
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/plans/plans.md
   - type: FinOps
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/finops/finops.md
+    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/finops/finops.md
   - url: graphql/airstack-graphql.md
     type: GraphQL
   contact:
@@ -313,6 +309,8 @@ apis:
   - type: DeprecationNotice
     url: https://docs.airstack.xyz/
 common:
+- type: Website
+  url: https://airstack.xyz
 - type: AgenticAccess
   url: agentic-access/airstack-agentic-access.yml
 - type: DomainSecurity
