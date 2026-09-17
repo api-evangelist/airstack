@@ -66,10 +66,11 @@ tags_raw:
 - Identity
 apis:
 - name: Airstack GraphQL API
-  description: The primary Airstack API offering composable GraphQL queries across on-chain and off-chain
-    Web3 data. Query NFT balances, token transfers, wallet identities, ENS names, POAP badges, and social
-    graph data across Ethereum, Polygon, Base, and other EVM chains. Supports cross-chain and cross-project
-    queries in a single request with cursor-based pagination.
+  description: >-
+    The primary Airstack API offering composable GraphQL queries across on-chain and off-chain Web3 data.
+    Query NFT balances, token transfers, wallet identities, ENS names, POAP badges, and social graph data
+    across Ethereum, Polygon, Base, and other EVM chains. Supports cross-chain and cross-project queries
+    in a single request with cursor-based pagination.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.airstack.xyz/
   baseURL: https://api.airstack.xyz/graphql
@@ -107,11 +108,13 @@ apis:
   - type: GettingStarted
     url: https://docs.airstack.xyz/airstack-docs-and-faqs/basics
   - type: RateLimits
-    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/rate-limits/graphql-api.md
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/rate-limits/graphql-api.md
   - type: Plans
     url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/plans/plans.md
   - type: FinOps
-    url: https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/finops/finops.md
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/airstack/refs/heads/main/finops/finops.md
   - url: graphql/airstack-graphql.md
     type: GraphQL
   contact:
@@ -128,20 +131,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/airstack-casts-api-openapi.yml
-  - type: Documentation
-    url: https://docs.airstack.xyz/
-  - type: DeprecationNotice
-    url: https://docs.airstack.xyz/
-- aid: airstack:airstack-fids-api
-  name: Airstack FIDs API
-  description: The FIDs API from Airstack — 1 operation(s) for fids.
-  humanURL: https://docs.airstack.xyz/
-  baseURL: https://api.airstack.xyz/graphql
-  tags:
-  - FIDs
-  properties:
-  - type: OpenAPI
-    url: openapi/airstack-fids-api-openapi.yml
   - type: Documentation
     url: https://docs.airstack.xyz/
   - type: DeprecationNotice
@@ -230,22 +219,6 @@ apis:
     url: https://docs.airstack.xyz/
   - type: DeprecationNotice
     url: https://docs.airstack.xyz/
-- aid: airstack:airstack-userdata-api
-  name: Airstack UserData API
-  description: The UserData API from Airstack — 1 operation(s) for userdata.
-  humanURL: https://docs.airstack.xyz/
-  baseURL: https://api.airstack.xyz/graphql
-  tags:
-  - User Data
-  tags_raw:
-  - UserData
-  properties:
-  - type: OpenAPI
-    url: openapi/airstack-userdata-api-openapi.yml
-  - type: Documentation
-    url: https://docs.airstack.xyz/
-  - type: DeprecationNotice
-    url: https://docs.airstack.xyz/
 - aid: airstack:airstack-usernames-api
   name: Airstack Usernames API
   description: The Usernames API from Airstack — 2 operation(s) for usernames.
@@ -304,6 +277,34 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/airstack-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-fids-api
+  name: Airstack FI Ds API
+  description: The FIDs API from Airstack — 1 operation(s) for fids.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - FIDs
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-fids-api-openapi.yml
+  - type: Documentation
+    url: https://docs.airstack.xyz/
+  - type: DeprecationNotice
+    url: https://docs.airstack.xyz/
+- aid: airstack:airstack-user-data-api
+  name: Airstack User Data API
+  description: The User Data API from Airstack — 1 operation(s) for user data.
+  humanURL: https://docs.airstack.xyz/
+  baseURL: https://api.airstack.xyz/graphql
+  tags:
+  - User Data
+  properties:
+  - type: OpenAPI
+    url: openapi/airstack-user-data-api-openapi.yml
   - type: Documentation
     url: https://docs.airstack.xyz/
   - type: DeprecationNotice
