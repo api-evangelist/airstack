@@ -1,8 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Farcaster Hub REST Casts Storage API
+  title: Farcaster Hub REST Storage API
   version: '1.0'
-  description: "Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the [Farcaster docs](https://www.thehubble.xyz/docs/httpapi/httpapi.html) for more details. Some client libraries:\n  - [TypeScript](https://www.npmjs.com/package/@standard-crypto/farcaster-js-hub-rest)\n"
+  description: 'Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the Farcaster docs for more details. Some client libraries:
+
+    - TypeScript'
 servers:
 - url: https://hubs.airstack.xyz
 security:
@@ -17,7 +19,7 @@ paths:
       tags:
       - Storage
       operationId: GetStorageLimitsByFid
-      summary: Get an FID's storage limits.
+      summary: Get an FID's storage limits
       parameters:
       - name: fid
         in: query
@@ -36,26 +38,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    StorageLimit:
-      type: object
-      properties:
-        storeType:
-          $ref: '#/components/schemas/StoreType'
-        limit:
-          type: integer
-          format: uint64
-      required:
-      - storeType
-      - limit
-    StorageLimitsResponse:
-      type: object
-      properties:
-        limits:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageLimit'
-      required:
-      - limits
     StoreType:
       type: string
       default: STORE_TYPE_CASTS
@@ -66,6 +48,15 @@ components:
       - STORE_TYPE_USER_DATA
       - STORE_TYPE_VERIFICATIONS
       - STORE_TYPE_USERNAME_PROOFS
+    StorageLimitsResponse:
+      type: object
+      properties:
+        limits:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageLimit'
+      required:
+      - limits
     ErrorResponse:
       required:
       - code
@@ -95,6 +86,17 @@ components:
               type: array
               items:
                 type: string
+    StorageLimit:
+      type: object
+      properties:
+        storeType:
+          $ref: '#/components/schemas/StoreType'
+        limit:
+          type: integer
+          format: uint64
+      required:
+      - storeType
+      - limit
   responses:
     ErrorResponse:
       description: An unexpected error response.

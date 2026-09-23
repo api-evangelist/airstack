@@ -1,19 +1,8 @@
 {
   "provider": "airstack",
   "sources": [
-    "airstack-casts-api-openapi.yml",
-    "airstack-fids-api-openapi.yml",
-    "airstack-hubevents-api-openapi.yml",
-    "airstack-links-api-openapi.yml",
-    "airstack-onchainevents-api-openapi.yml",
-    "airstack-reactions-api-openapi.yml",
-    "airstack-storage-api-openapi.yml",
-    "airstack-submitmessage-api-openapi.yml",
-    "airstack-userdata-api-openapi.yml",
-    "airstack-usernames-api-openapi.yml",
-    "airstack-validatemessage-api-openapi.yml",
-    "airstack-verifications-api-openapi.yml",
-    "airstack-webhooks-api-openapi.yml"
+    "_original/farcaster-hub-rest-api.json",
+    "_original/farcaster-webhooks-api.json"
   ],
   "outputs": [
     "airstack-casts-api-openapi.yml",
@@ -30,9 +19,44 @@
     "airstack-verifications-api-openapi.yml",
     "airstack-webhooks-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "farcaster-hub-rest-api.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "farcaster-hub-rest-api.json: declared missing tag: Casts",
+    "farcaster-hub-rest-api.json: declared missing tag: FIDs",
+    "farcaster-hub-rest-api.json: declared missing tag: HubEvents",
+    "farcaster-hub-rest-api.json: declared missing tag: Links",
+    "farcaster-hub-rest-api.json: declared missing tag: OnChainEvents",
+    "farcaster-hub-rest-api.json: declared missing tag: Reactions",
+    "farcaster-hub-rest-api.json: declared missing tag: Storage",
+    "farcaster-hub-rest-api.json: declared missing tag: SubmitMessage",
+    "farcaster-hub-rest-api.json: declared missing tag: UserData",
+    "farcaster-hub-rest-api.json: declared missing tag: Usernames",
+    "farcaster-hub-rest-api.json: declared missing tag: ValidateMessage",
+    "farcaster-hub-rest-api.json: declared missing tag: Verifications",
+    "farcaster-webhooks-api.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "farcaster-webhooks-api.json: declared missing tag: Webhooks",
+    "superseded outputs removed: airstack-fi-ds-api-openapi.yml, airstack-user-data-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 14 total)"
+  ],
+  "skipped": [
+    "airstack-casts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-fi-ds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-hubevents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-links-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-onchainevents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-reactions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-storage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-submitmessage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-user-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-usernames-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-validatemessage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-verifications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

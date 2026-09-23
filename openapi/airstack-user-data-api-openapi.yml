@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Farcaster Hub REST Links API
+  title: Farcaster Hub REST User Data API
   version: '1.0'
   description: 'Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the Farcaster docs for more details. Some client libraries:
 
@@ -10,153 +10,58 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: Links
+- name: User Data
 paths:
-  /v1/linkById:
+  /v1/userDataByFid:
     get:
       security:
       - ApiKeyAuth: []
       tags:
-      - Links
-      summary: Get a link by its FID and target FID
-      operationId: GetLinkById
+      - User Data
+      summary: Get UserData for a FID
+      description: '**Note:** one of two different response schemas is returned based on whether the caller provides the `user_data_type` parameter. If included, a single `UserDataAdd` message is returned (or a `not_found` error). If omitted, a paginated list of `UserDataAdd` messages is returned instead'
+      operationId: GetUserDataByFid
       parameters:
       - name: fid
         in: query
-        description: The FID of the link's originator
-        required: true
-        schema:
-          type: integer
-      - name: target_fid
-        in: query
-        description: The FID of the target of the link
-        required: true
-        schema:
-          type: integer
-      - name: link_type
-        in: query
-        description: The type of link, as a string value
-        required: true
-        schema:
-          $ref: '#/components/schemas/LinkType'
-      responses:
-        '200':
-          description: The requested Link.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LinkAdd'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-  /v1/linksByFid:
-    get:
-      security:
-      - ApiKeyAuth: []
-      tags:
-      - Links
-      summary: Get all links from a source FID
-      operationId: ListLinksByFid
-      parameters:
-      - name: fid
-        in: query
+        description: The FID that's being requested
         schema:
           type: integer
         required: true
-        description: The FID of the link's originator
-      - name: link_type
+      - name: user_data_type
         in: query
+        description: The type of user data, either as a numerical value or type string. If this is omitted, all user data for the FID is returned
         schema:
-          $ref: '#/components/schemas/LinkType'
+          $ref: '#/components/schemas/UserDataType'
         required: false
-        description: The type of link, as a string value
       - $ref: '#/components/parameters/pageSize'
       - $ref: '#/components/parameters/paginationReverse'
       - $ref: '#/components/parameters/pageToken'
       responses:
         '200':
-          description: The requested Links.
+          description: The requested UserData.
           content:
             application/json:
               schema:
-                required:
-                - messages
-                - nextPageToken
-                type: object
-                properties:
-                  messages:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/LinkAdd'
-                  nextPageToken:
-                    pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-                    type: string
-                    format: byte
-        default:
-          $ref: '#/components/responses/ErrorResponse'
-  /v1/linksByTargetFid:
-    get:
-      security:
-      - ApiKeyAuth: []
-      tags:
-      - Links
-      summary: Get all links to a target FID
-      operationId: ListLinksByTargetFid
-      parameters:
-      - name: target_fid
-        in: query
-        schema:
-          type: integer
-        required: true
-        description: The FID of the target of the link
-      - name: link_type
-        in: query
-        schema:
-          $ref: '#/components/schemas/LinkType'
-        required: false
-        description: The type of link, as a string value
-      - $ref: '#/components/parameters/pageSize'
-      - $ref: '#/components/parameters/paginationReverse'
-      - $ref: '#/components/parameters/pageToken'
-      responses:
-        '200':
-          description: The requested Links.
-          content:
-            application/json:
-              schema:
-                required:
-                - messages
-                - nextPageToken
-                type: object
-                properties:
-                  messages:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/LinkAdd'
-                  nextPageToken:
-                    pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
-                    type: string
-                    format: byte
+                oneOf:
+                - $ref: '#/components/schemas/UserDataAdd'
+                - type: object
+                  required:
+                  - messages
+                  - nextPageToken
+                  properties:
+                    messages:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/UserDataAdd'
+                    nextPageToken:
+                      pattern: ^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$
+                      type: string
+                      format: byte
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
-    LinkBody:
-      description: Adds or removes a Link
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/LinkType'
-        displayTimestamp:
-          title: User-defined timestamp that preserves original timestamp when message.data.timestamp needs to be updated for compaction
-          type: integer
-          format: int64
-        targetFid:
-          title: The fid the link relates to
-          type: integer
-          format: uint64
-      required:
-      - type
-      - targetFid
     MessageType:
       type: string
       description: "Type of the MessageBody.\n - MESSAGE_TYPE_CAST_ADD: Add a new Cast\n - MESSAGE_TYPE_CAST_REMOVE: Remove an existing Cast\n - MESSAGE_TYPE_REACTION_ADD: Add a Reaction to a Cast\n - MESSAGE_TYPE_REACTION_REMOVE: Remove a Reaction from a Cast\n - MESSAGE_TYPE_LINK_ADD: Add a new Link\n - MESSAGE_TYPE_LINK_REMOVE: Remove an existing Link\n - MESSAGE_TYPE_VERIFICATION_ADD_ETH_ADDRESS: Add a Verification of an Ethereum Address\n - MESSAGE_TYPE_VERIFICATION_REMOVE: Remove a Verification\n - MESSAGE_TYPE_USER_DATA_ADD: Add metadata about a user\n - MESSAGE_TYPE_USERNAME_PROOF: Add or replace a username proof\n - MESSAGE_TYPE_FRAME_ACTION: A Farcaster Frame action"
@@ -200,15 +105,6 @@ components:
       - signature
       - signatureScheme
       - signer
-    MessageDataLink:
-      allOf:
-      - $ref: '#/components/schemas/MessageDataCommon'
-      - type: object
-        required:
-        - linkBody
-        properties:
-          linkBody:
-            $ref: '#/components/schemas/LinkBody'
     SignatureScheme:
       type: string
       description: "Type of signature scheme used to sign the Message hash\n- SIGNATURE_SCHEME_ED25519: Ed25519 signature (default)\n - SIGNATURE_SCHEME_EIP712: ECDSA signature using EIP-712 scheme"
@@ -216,14 +112,26 @@ components:
       enum:
       - SIGNATURE_SCHEME_ED25519
       - SIGNATURE_SCHEME_EIP712
-    LinkAdd:
+    UserDataBody:
+      description: Adds metadata about a user
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/UserDataType'
+        value:
+          title: Value of the metadata
+          type: string
+      required:
+      - type
+      - value
+    UserDataAdd:
       allOf:
       - $ref: '#/components/schemas/MessageCommon'
       - type: object
         properties:
           data:
             allOf:
-            - $ref: '#/components/schemas/MessageDataLink'
+            - $ref: '#/components/schemas/MessageDataUserDataAdd'
             - type: object
               properties:
                 type:
@@ -251,14 +159,6 @@ components:
           example: 48994466
         network:
           $ref: '#/components/schemas/FarcasterNetwork'
-    LinkType:
-      type: string
-      description: 'Type of Link.
-
-        - follow: Follow another user'
-      default: follow
-      enum:
-      - follow
     HashScheme:
       type: string
       description: 'Type of hashing scheme used to produce a digest of MessageData. - HASH_SCHEME_BLAKE3: Default scheme for hashing MessageData
@@ -296,6 +196,25 @@ components:
               type: array
               items:
                 type: string
+    UserDataType:
+      type: string
+      description: "Type of UserData.\n- USER_DATA_TYPE_PFP: Profile Picture for the user\n - USER_DATA_TYPE_DISPLAY: Display Name for the user\n - USER_DATA_TYPE_BIO: Bio for the user\n - USER_DATA_TYPE_URL: URL of the user\n - USER_DATA_TYPE_USERNAME: Preferred Name for the user"
+      default: USER_DATA_TYPE_PFP
+      enum:
+      - USER_DATA_TYPE_PFP
+      - USER_DATA_TYPE_DISPLAY
+      - USER_DATA_TYPE_BIO
+      - USER_DATA_TYPE_URL
+      - USER_DATA_TYPE_USERNAME
+    MessageDataUserDataAdd:
+      allOf:
+      - $ref: '#/components/schemas/MessageDataCommon'
+      - type: object
+        required:
+        - userDataBody
+        properties:
+          userDataBody:
+            $ref: '#/components/schemas/UserDataBody'
     FarcasterNetwork:
       type: string
       description: "Farcaster network the message is intended for.\n- FARCASTER_NETWORK_MAINNET: Public primary network\n - FARCASTER_NETWORK_TESTNET: Public test network\n - FARCASTER_NETWORK_DEVNET: Private test network"
@@ -304,13 +223,6 @@ components:
       - FARCASTER_NETWORK_MAINNET
       - FARCASTER_NETWORK_TESTNET
       - FARCASTER_NETWORK_DEVNET
-  responses:
-    ErrorResponse:
-      description: An unexpected error response.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     paginationReverse:
       name: reverse
@@ -330,6 +242,13 @@ components:
       description: Maximum number of messages to return in a single response
       schema:
         type: integer
+  responses:
+    ErrorResponse:
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

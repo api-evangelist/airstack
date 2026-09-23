@@ -1,10 +1,10 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Farcaster Hub REST Casts Webhooks API
+  title: Farcaster Webhooks API
   version: '1.0'
-  description: "Perform basic queries of Farcaster state via the REST API of a Farcaster hub. See the [Farcaster docs](https://www.thehubble.xyz/docs/httpapi/httpapi.html) for more details. Some client libraries:\n  - [TypeScript](https://www.npmjs.com/package/@standard-crypto/farcaster-js-hub-rest)\n"
+  description: These APIs allow you to create and manage webhook subscriptions for listening to events on the Farcaster network.
 servers:
-- url: https://hubs.airstack.xyz
+- url: https://webhooks.airstack.xyz
 security:
 - ApiKeyAuth: []
 tags:
@@ -16,7 +16,7 @@ paths:
       - ApiKeyAuth: []
       tags:
       - Webhooks
-      summary: Create a new webhook.
+      summary: Create a new webhook
       operationId: subscriptionsCreate
       requestBody:
         content:
@@ -83,7 +83,7 @@ paths:
       - ApiKeyAuth: []
       tags:
       - Webhooks
-      summary: Validate webhook filter configuration.
+      summary: Validate webhook filter configuration
       operationId: subscriptionsTestFilter
       requestBody:
         content:
@@ -120,7 +120,7 @@ paths:
       - ApiKeyAuth: []
       tags:
       - Webhooks
-      summary: Delete an existing webhook.
+      summary: Delete an existing webhook
       operationId: subscriptionsDelete
       parameters:
       - name: webhook_id
@@ -149,4 +149,4 @@ components:
     ApiKeyAuth:
       type: apiKey
       in: header
-      name: x-airstack-hubs
+      name: Authorization
