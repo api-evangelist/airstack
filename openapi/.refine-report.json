@@ -20,7 +20,7 @@
     "airstack-webhooks-api-openapi.yml"
   ],
   "archived": [
-    "deleted 2 superseded output(s) from the previous generation"
+    "deleted 1 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
@@ -41,12 +41,12 @@
     "farcaster-hub-rest-api.json: declared missing tag: Verifications",
     "farcaster-webhooks-api.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "farcaster-webhooks-api.json: declared missing tag: Webhooks",
-    "superseded outputs removed: airstack-fi-ds-api-openapi.yml, airstack-user-data-api-openapi.yml",
-    "apis.yml register: written (+2 apis, 14 total)"
+    "superseded outputs removed: airstack-user-data-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 14 total)"
   ],
   "skipped": [
     "airstack-casts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "airstack-fi-ds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "airstack-fids-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "airstack-hubevents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "airstack-links-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "airstack-onchainevents-api-openapi.yml: previously refined output, superseded by openapi/_original/",

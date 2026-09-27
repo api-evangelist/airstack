@@ -57,6 +57,17 @@ components:
             $ref: '#/components/schemas/StorageLimit'
       required:
       - limits
+    StorageLimit:
+      type: object
+      properties:
+        storeType:
+          $ref: '#/components/schemas/StoreType'
+        limit:
+          type: integer
+          format: uint64
+      required:
+      - storeType
+      - limit
     ErrorResponse:
       required:
       - code
@@ -86,17 +97,6 @@ components:
               type: array
               items:
                 type: string
-    StorageLimit:
-      type: object
-      properties:
-        storeType:
-          $ref: '#/components/schemas/StoreType'
-        limit:
-          type: integer
-          format: uint64
-      required:
-      - storeType
-      - limit
   responses:
     ErrorResponse:
       description: An unexpected error response.
