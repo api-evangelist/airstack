@@ -177,9 +177,13 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
-    CastHash:
-      pattern: ^0x[0-9a-fA-F]{40}$
+    SignatureScheme:
       type: string
+      description: "Type of signature scheme used to sign the Message hash\n- SIGNATURE_SCHEME_ED25519: Ed25519 signature (default)\n - SIGNATURE_SCHEME_EIP712: ECDSA signature using EIP-712 scheme"
+      default: SIGNATURE_SCHEME_ED25519
+      enum:
+      - SIGNATURE_SCHEME_ED25519
+      - SIGNATURE_SCHEME_EIP712
     CastAddBody:
       description: Adds a new Cast
       type: object
@@ -222,50 +226,18 @@ components:
       - text
       - mentionsPositions
       - embeds
+    UrlEmbed:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+      required:
+      - url
     Embed:
       oneOf:
       - $ref: '#/components/schemas/CastEmbed'
       - $ref: '#/components/schemas/UrlEmbed'
-    MessageDataCommon:
-      required:
-      - fid
-      - network
-      - timestamp
-      type: object
-      properties:
-        fid:
-          title: Farcaster ID of the user producing the message
-          type: integer
-          format: uint64
-          example: 2
-        timestamp:
-          title: Farcaster epoch timestamp in seconds
-          type: integer
-          format: int64
-          example: 48994466
-        network:
-          $ref: '#/components/schemas/FarcasterNetwork'
-    CastId:
-      description: Identifier used to look up a Cast
-      required:
-      - fid
-      - hash
-      type: object
-      properties:
-        fid:
-          title: Fid of the user who created the cast
-          type: integer
-          format: uint64
-        hash:
-          $ref: '#/components/schemas/CastHash'
-    HashScheme:
-      type: string
-      description: 'Type of hashing scheme used to produce a digest of MessageData. - HASH_SCHEME_BLAKE3: Default scheme for hashing MessageData
-
-        '
-      default: HASH_SCHEME_BLAKE3
-      enum:
-      - HASH_SCHEME_BLAKE3
     ErrorResponse:
       required:
       - code
@@ -295,6 +267,25 @@ components:
               type: array
               items:
                 type: string
+    CastAdd:
+      allOf:
+      - $ref: '#/components/schemas/MessageCommon'
+      - type: object
+        properties:
+          data:
+            allOf:
+            - $ref: '#/components/schemas/MessageDataCastAdd'
+            - type: object
+              properties:
+                type:
+                  $ref: '#/components/schemas/MessageType'
+              required:
+              - type
+        required:
+        - data
+    CastHash:
+      pattern: ^0x[0-9a-fA-F]{40}$
+      type: string
     MessageCommon:
       type: object
       properties:
@@ -322,23 +313,22 @@ components:
       - signature
       - signatureScheme
       - signer
-    MessageDataCastAdd:
-      allOf:
-      - $ref: '#/components/schemas/MessageDataCommon'
-      - type: object
-        required:
-        - castAddBody
-        properties:
-          castAddBody:
-            $ref: '#/components/schemas/CastAddBody'
-    UrlEmbed:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-      required:
-      - url
+    FarcasterNetwork:
+      type: string
+      description: "Farcaster network the message is intended for.\n- FARCASTER_NETWORK_MAINNET: Public primary network\n - FARCASTER_NETWORK_TESTNET: Public test network\n - FARCASTER_NETWORK_DEVNET: Private test network"
+      default: FARCASTER_NETWORK_MAINNET
+      enum:
+      - FARCASTER_NETWORK_MAINNET
+      - FARCASTER_NETWORK_TESTNET
+      - FARCASTER_NETWORK_DEVNET
+    HashScheme:
+      type: string
+      description: 'Type of hashing scheme used to produce a digest of MessageData. - HASH_SCHEME_BLAKE3: Default scheme for hashing MessageData
+
+        '
+      default: HASH_SCHEME_BLAKE3
+      enum:
+      - HASH_SCHEME_BLAKE3
     MessageType:
       type: string
       description: "Type of the MessageBody.\n - MESSAGE_TYPE_CAST_ADD: Add a new Cast\n - MESSAGE_TYPE_CAST_REMOVE: Remove an existing Cast\n - MESSAGE_TYPE_REACTION_ADD: Add a Reaction to a Cast\n - MESSAGE_TYPE_REACTION_REMOVE: Remove a Reaction from a Cast\n - MESSAGE_TYPE_LINK_ADD: Add a new Link\n - MESSAGE_TYPE_LINK_REMOVE: Remove an existing Link\n - MESSAGE_TYPE_VERIFICATION_ADD_ETH_ADDRESS: Add a Verification of an Ethereum Address\n - MESSAGE_TYPE_VERIFICATION_REMOVE: Remove a Verification\n - MESSAGE_TYPE_USER_DATA_ADD: Add metadata about a user\n - MESSAGE_TYPE_USERNAME_PROOF: Add or replace a username proof\n - MESSAGE_TYPE_FRAME_ACTION: A Farcaster Frame action"
@@ -355,29 +345,34 @@ components:
       - MESSAGE_TYPE_USER_DATA_ADD
       - MESSAGE_TYPE_USERNAME_PROOF
       - MESSAGE_TYPE_FRAME_ACTION
-    SignatureScheme:
-      type: string
-      description: "Type of signature scheme used to sign the Message hash\n- SIGNATURE_SCHEME_ED25519: Ed25519 signature (default)\n - SIGNATURE_SCHEME_EIP712: ECDSA signature using EIP-712 scheme"
-      default: SIGNATURE_SCHEME_ED25519
-      enum:
-      - SIGNATURE_SCHEME_ED25519
-      - SIGNATURE_SCHEME_EIP712
-    CastAdd:
+    MessageDataCastAdd:
       allOf:
-      - $ref: '#/components/schemas/MessageCommon'
+      - $ref: '#/components/schemas/MessageDataCommon'
       - type: object
-        properties:
-          data:
-            allOf:
-            - $ref: '#/components/schemas/MessageDataCastAdd'
-            - type: object
-              properties:
-                type:
-                  $ref: '#/components/schemas/MessageType'
-              required:
-              - type
         required:
-        - data
+        - castAddBody
+        properties:
+          castAddBody:
+            $ref: '#/components/schemas/CastAddBody'
+    MessageDataCommon:
+      required:
+      - fid
+      - network
+      - timestamp
+      type: object
+      properties:
+        fid:
+          title: Farcaster ID of the user producing the message
+          type: integer
+          format: uint64
+          example: 2
+        timestamp:
+          title: Farcaster epoch timestamp in seconds
+          type: integer
+          format: int64
+          example: 48994466
+        network:
+          $ref: '#/components/schemas/FarcasterNetwork'
     CastEmbed:
       type: object
       properties:
@@ -385,33 +380,38 @@ components:
           $ref: '#/components/schemas/CastId'
       required:
       - castId
-    FarcasterNetwork:
-      type: string
-      description: "Farcaster network the message is intended for.\n- FARCASTER_NETWORK_MAINNET: Public primary network\n - FARCASTER_NETWORK_TESTNET: Public test network\n - FARCASTER_NETWORK_DEVNET: Private test network"
-      default: FARCASTER_NETWORK_MAINNET
-      enum:
-      - FARCASTER_NETWORK_MAINNET
-      - FARCASTER_NETWORK_TESTNET
-      - FARCASTER_NETWORK_DEVNET
+    CastId:
+      description: Identifier used to look up a Cast
+      required:
+      - fid
+      - hash
+      type: object
+      properties:
+        fid:
+          title: Fid of the user who created the cast
+          type: integer
+          format: uint64
+        hash:
+          $ref: '#/components/schemas/CastHash'
   parameters:
-    paginationReverse:
-      name: reverse
-      in: query
-      description: Reverse the sort order, returning latest messages first
-      schema:
-        type: boolean
-    pageToken:
-      name: pageToken
-      in: query
-      description: The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page
-      schema:
-        type: string
     pageSize:
       name: pageSize
       in: query
       description: Maximum number of messages to return in a single response
       schema:
         type: integer
+    pageToken:
+      name: pageToken
+      in: query
+      description: The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page
+      schema:
+        type: string
+    paginationReverse:
+      name: reverse
+      in: query
+      description: Reverse the sort order, returning latest messages first
+      schema:
+        type: boolean
   responses:
     ErrorResponse:
       description: An unexpected error response.

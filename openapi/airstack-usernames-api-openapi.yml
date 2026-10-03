@@ -66,14 +66,36 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    ErrorResponse:
-      description: An unexpected error response.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ErrorResponse:
+      required:
+      - code
+      - details
+      - errCode
+      - metadata
+      - name
+      - presentable
+      type: object
+      properties:
+        errCode:
+          type: string
+        presentable:
+          type: boolean
+        name:
+          type: string
+        code:
+          type: integer
+        details:
+          type: string
+        metadata:
+          required:
+          - errcode
+          type: object
+          properties:
+            errcode:
+              type: array
+              items:
+                type: string
     UsernameProofsResponse:
       type: object
       properties:
@@ -117,35 +139,13 @@ components:
       - signature
       - fid
       - type
+  responses:
     ErrorResponse:
-      required:
-      - code
-      - details
-      - errCode
-      - metadata
-      - name
-      - presentable
-      type: object
-      properties:
-        errCode:
-          type: string
-        presentable:
-          type: boolean
-        name:
-          type: string
-        code:
-          type: integer
-        details:
-          type: string
-        metadata:
-          required:
-          - errcode
-          type: object
-          properties:
-            errcode:
-              type: array
-              items:
-                type: string
+      description: An unexpected error response.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

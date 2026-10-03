@@ -38,36 +38,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    StoreType:
-      type: string
-      default: STORE_TYPE_CASTS
-      enum:
-      - STORE_TYPE_CASTS
-      - STORE_TYPE_LINKS
-      - STORE_TYPE_REACTIONS
-      - STORE_TYPE_USER_DATA
-      - STORE_TYPE_VERIFICATIONS
-      - STORE_TYPE_USERNAME_PROOFS
-    StorageLimitsResponse:
-      type: object
-      properties:
-        limits:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageLimit'
-      required:
-      - limits
-    StorageLimit:
-      type: object
-      properties:
-        storeType:
-          $ref: '#/components/schemas/StoreType'
-        limit:
-          type: integer
-          format: uint64
-      required:
-      - storeType
-      - limit
     ErrorResponse:
       required:
       - code
@@ -97,6 +67,36 @@ components:
               type: array
               items:
                 type: string
+    StorageLimitsResponse:
+      type: object
+      properties:
+        limits:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageLimit'
+      required:
+      - limits
+    StoreType:
+      type: string
+      default: STORE_TYPE_CASTS
+      enum:
+      - STORE_TYPE_CASTS
+      - STORE_TYPE_LINKS
+      - STORE_TYPE_REACTIONS
+      - STORE_TYPE_USER_DATA
+      - STORE_TYPE_VERIFICATIONS
+      - STORE_TYPE_USERNAME_PROOFS
+    StorageLimit:
+      type: object
+      properties:
+        storeType:
+          $ref: '#/components/schemas/StoreType'
+        limit:
+          type: integer
+          format: uint64
+      required:
+      - storeType
+      - limit
   responses:
     ErrorResponse:
       description: An unexpected error response.
