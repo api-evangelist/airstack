@@ -96,21 +96,6 @@ components:
               type: array
               items:
                 type: string
-    UsernameProofsResponse:
-      type: object
-      properties:
-        proofs:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserNameProof'
-      required:
-      - proofs
-    UserNameType:
-      type: string
-      default: USERNAME_TYPE_FNAME
-      enum:
-      - USERNAME_TYPE_FNAME
-      - USERNAME_TYPE_ENS_L1
     UserNameProof:
       type: object
       properties:
@@ -139,6 +124,21 @@ components:
       - signature
       - fid
       - type
+    UsernameProofsResponse:
+      type: object
+      properties:
+        proofs:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserNameProof'
+      required:
+      - proofs
+    UserNameType:
+      type: string
+      default: USERNAME_TYPE_FNAME
+      enum:
+      - USERNAME_TYPE_FNAME
+      - USERNAME_TYPE_ENS_L1
   responses:
     ErrorResponse:
       description: An unexpected error response.
