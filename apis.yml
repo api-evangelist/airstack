@@ -310,6 +310,9 @@ apis:
   - type: DeprecationNotice
     url: https://docs.airstack.xyz/
 common:
+- type: CapabilityMap
+  url: capabilities/airstack-capability-edges.yml
+  name: Airstack Business Capability Map
 - type: Website
   url: https://airstack.xyz
 - type: AgenticAccess

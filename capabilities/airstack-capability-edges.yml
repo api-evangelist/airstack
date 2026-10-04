@@ -1,0 +1,26 @@
+slug: airstack
+provider: Airstack
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Webhooks
+  spec_file: airstack-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.75
+  evidence: These APIs allow you to create and manage webhook subscriptions for listening to events on
+    the Farcaster network; POST /api/v1/webhooks subscriptionsCreate Create a new webhook
+  reason: Operations create, test-filter and delete outbound webhook subscriptions for developers consuming
+    the platform's event stream, matching Webhook & Event Subscription Management. Some risk this is treated
+    as pure plumbing, hence moderate confidence.
