@@ -34,25 +34,6 @@ paths:
         default:
           $ref: '#/components/responses/ErrorResponse'
 components:
-  parameters:
-    pageToken:
-      name: pageToken
-      in: query
-      description: The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page
-      schema:
-        type: string
-    paginationReverse:
-      name: reverse
-      in: query
-      description: Reverse the sort order, returning latest messages first
-      schema:
-        type: boolean
-    pageSize:
-      name: pageSize
-      in: query
-      description: Maximum number of messages to return in a single response
-      schema:
-        type: integer
   schemas:
     ErrorResponse:
       required:
@@ -105,6 +86,25 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    pageToken:
+      name: pageToken
+      in: query
+      description: The page token returned by the previous query, to fetch the next page. If this parameter is empty, fetch the first page
+      schema:
+        type: string
+    pageSize:
+      name: pageSize
+      in: query
+      description: Maximum number of messages to return in a single response
+      schema:
+        type: integer
+    paginationReverse:
+      name: reverse
+      in: query
+      description: Reverse the sort order, returning latest messages first
+      schema:
+        type: boolean
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
