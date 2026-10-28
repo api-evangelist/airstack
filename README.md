@@ -64,69 +64,140 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Airstack is a Web3 data aggregation platform providing GraphQL and REST APIs for querying on-chain and off-chain data across multiple blockchains. Developers can query NFT ownership, token balances, wallet identities, ENS names, POAP badges, and cross-chain data in a single composable request.
+Airstack is a Web3 data aggregation platform providing GraphQL and REST APIs for querying on-chain and off-chain data across multiple blockchains. Developers can query NFT ownership, token balances, wallet identities, ENS names, POAP badges, and cross-chain data in a single composable request. The platform indexes Ethereum, Polygon, Base, and other EVM-compatible chains, enabling complex cross-project queries without running your own infrastructure.
 
-## APIs
+**Areas:** Web3 · Blockchain · GraphQL · NFT · Tokens · On-Chain Data · Ethereum · Polygon · Base · ENS · POAP · Social Graph
 
-| API | Type | Endpoint |
-|-----|------|----------|
-| Airstack GraphQL API | GraphQL | `https://api.airstack.xyz/graphql` |
-| Farcaster Hub API | REST / gRPC | `https://api.airstack.xyz` (deprecated) |
+## Airstack on APIs.io
 
-## Supported Data Types
+Everything profiled for Airstack is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/airstack/](https://apis.io/providers/airstack/)** — or go straight to one of the APIs or properties below.
 
-- ERC20 token balances and transfers
-- ERC721 / ERC1155 NFT ownership and metadata
-- ERC6551 token-bound accounts
-- ENS names and reverse resolution
-- POAP badges
-- Wallet identity resolution (cross-chain)
-- Social graph data (Farcaster, Lens — Farcaster deprecated as of late 2024)
-- XMTP messaging eligibility
+### APIs (14)
 
-## Supported Blockchains
+- [Airstack GraphQL API](https://apis.io/apis/airstack/airstack-graphql-api/) — The primary Airstack API offering composable GraphQL queries across on-chain and off-chain Web3 data. Query NFT balances, token transfers, wallet…
+- [Airstack Casts API](https://apis.io/apis/airstack/airstack-casts-api/) — The Casts API from Airstack — 4 operation(s) for casts.
+- [Airstack HubEvents API](https://apis.io/apis/airstack/airstack-hubevents-api/) — The HubEvents API from Airstack — 2 operation(s) for hubevents.
+- [Airstack Links API](https://apis.io/apis/airstack/airstack-links-api/) — The Links API from Airstack — 3 operation(s) for links.
+- [Airstack OnChainEvents API](https://apis.io/apis/airstack/airstack-onchainevents-api/) — The OnChainEvents API from Airstack — 3 operation(s) for onchainevents.
+- [Airstack Reactions API](https://apis.io/apis/airstack/airstack-reactions-api/) — The Reactions API from Airstack — 4 operation(s) for reactions.
+- [Airstack Storage API](https://apis.io/apis/airstack/airstack-storage-api/) — The Storage API from Airstack — 1 operation(s) for storage.
+- [Airstack SubmitMessage API](https://apis.io/apis/airstack/airstack-submitmessage-api/) — The SubmitMessage API from Airstack — 1 operation(s) for submitmessage.
+- [Airstack Usernames API](https://apis.io/apis/airstack/airstack-usernames-api/) — The Usernames API from Airstack — 2 operation(s) for usernames.
+- [Airstack ValidateMessage API](https://apis.io/apis/airstack/airstack-validatemessage-api/) — The ValidateMessage API from Airstack — 1 operation(s) for validatemessage.
+- [Airstack Verifications API](https://apis.io/apis/airstack/airstack-verifications-api/) — The Verifications API from Airstack — 1 operation(s) for verifications.
+- [Airstack Webhooks API](https://apis.io/apis/airstack/airstack-webhooks-api/) — The Webhooks API from Airstack — 3 operation(s) for webhooks.
+- [Airstack FI Ds API](https://apis.io/apis/airstack/airstack-fids-api/) — The FIDs API from Airstack — 1 operation(s) for fids.
+- [Airstack User Data API](https://apis.io/apis/airstack/airstack-user-data-api/) — The User Data API from Airstack — 1 operation(s) for user data.
 
-- Ethereum
-- Polygon
-- Base
-- Other EVM-compatible chains
+### Published properties
 
-## Authentication
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Pass your Airstack API key in the `Authorization` header. A production key requires:
+#### GraphQL (1)
 
-1. An Airstack account at [app.airstack.xyz](https://app.airstack.xyz)
-2. At least 1 /airstack Channel Fan Token in a connected Farcaster wallet
-3. A payment card on file
+GraphQL schemas.
 
-## Rate Limits
+- [Airstack GraphQL API](https://apis.io/graphqls/airstack/airstack-graphql/)
 
-- 3,000 requests/minute
-- 300 requests/second (burst)
-- Maximum 200 records per query; default 50
+#### Agentic access (1)
 
-## Pricing
+Which operations an agent can call, which act, and which need a human in the loop.
 
-$0.00002 USD per API credit. Test keys are free; production keys are billed after free credits are exhausted.
+- [Airstack Agentic Access](https://apis.io/agentic-access/airstack/airstack-agentic-access/)
 
-## SDKs
+#### JSON Schema (1)
 
-- [Web SDK (JS/TS)](https://github.com/Airstack-xyz/airstack-web-sdk)
-- [Node.js SDK](https://github.com/Airstack-xyz/airstack-node-sdk)
-- [Python SDK](https://github.com/Airstack-xyz/airstack-python-sdk)
-- [Frames SDK](https://github.com/Airstack-xyz/airstack-frames-sdk)
+The data models the API reads and writes.
 
-## Resources
+- [Airstack Farcaster Hub API Schemas](https://apis.io/schemas/airstack/farcaster-hub-api-schemas/)
 
-- [Documentation](https://docs.airstack.xyz/)
-- [Explorer](https://explorer.airstack.xyz)
-- [Dashboard](https://app.airstack.xyz)
+#### Collections (13)
+
+Postman and Open Collection request collections.
+
+- [Farcaster Hub REST Casts API](https://apis.io/collections/airstack/open-airstack-casts-api/)
+- [Farcaster Hub REST Casts FIDs API](https://apis.io/collections/airstack/open-airstack-fids-api/)
+- [Farcaster Hub REST Casts HubEvents API](https://apis.io/collections/airstack/open-airstack-hubevents-api/)
+- [Farcaster Hub REST Casts Links API](https://apis.io/collections/airstack/open-airstack-links-api/)
+- [Farcaster Hub REST Casts OnChainEvents API](https://apis.io/collections/airstack/open-airstack-onchainevents-api/)
+- [Farcaster Hub REST Casts Reactions API](https://apis.io/collections/airstack/open-airstack-reactions-api/)
+- [Farcaster Hub REST Casts Storage API](https://apis.io/collections/airstack/open-airstack-storage-api/)
+- [Farcaster Hub REST Casts SubmitMessage API](https://apis.io/collections/airstack/open-airstack-submitmessage-api/)
+- [Farcaster Hub REST Casts UserData API](https://apis.io/collections/airstack/open-airstack-userdata-api/)
+- [Farcaster Hub REST Casts Usernames API](https://apis.io/collections/airstack/open-airstack-usernames-api/)
+- [Farcaster Hub REST Casts ValidateMessage API](https://apis.io/collections/airstack/open-airstack-validatemessage-api/)
+- [Farcaster Hub REST Casts Verifications API](https://apis.io/collections/airstack/open-airstack-verifications-api/)
+- [Farcaster Hub REST Casts Webhooks API](https://apis.io/collections/airstack/open-airstack-webhooks-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Airstack — jsonschema rules](https://apis.io/rules/airstack/airstack-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Airstack Authentication](https://apis.io/security/airstack/airstack-authentication/)
+- [Airstack Domain Security](https://apis.io/security/airstack/airstack-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://airstack.xyz)
 - [Blog](https://blog.airstack.xyz)
-- [GitHub](https://github.com/Airstack-xyz)
-- [Telegram Support](https://t.me/+1k3c2FR7z51mNDRh)
 
-## Notes
+## API Evangelist rating
 
-Airstack deprecated all Farcaster-related GraphQL APIs in late 2024. Developers using Farcaster data should migrate to [Neynar](https://neynar.com/). Moxie-related data is available at [developer.moxie.xyz](https://developer.moxie.xyz).
+**Kin Score 27.8** — thin · rubric 0.24.0 · scored 2026-10-17
 
-Additionally, as of 2025, the airstack.xyz domain redirects to [senpi.ai](https://www.senpi.ai/), which is a separate AI trading agent platform for Hyperliquid. The Airstack developer documentation remains at [docs.airstack.xyz](https://docs.airstack.xyz/).
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.6 |
+| Contract governance | 23.5 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 0.0 |
+
+**Agent readiness 22.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.2** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/airstack/](https://apis.io/providers/airstack/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Airstack: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/airstack/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
